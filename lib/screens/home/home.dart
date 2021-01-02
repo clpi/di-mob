@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dimo/router.dart';
 import 'package:dimo/comp/card.dart';
+import 'package:dimo/screens/records/records.dart';
+import 'package:dimo/screens/prefs/prefs.dart';
+import 'package:dimo/screens/user/user.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -10,16 +13,26 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
 
   RecRouterDelegate _routerDelegate = RecRouterDelegate();
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      persistentFooterButtons: [
-        OutlineButton(onPressed: () {Navigator.of(context).pushNamed("Records");}),
-      ],
       drawerScrimColor: Colors.deepPurpleAccent,
       appBar: AppBar(
         centerTitle: true,
@@ -66,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Container(
+        child: Container(
           child: Center(
             child: Column(
               children: <Widget>[
@@ -76,14 +90,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   onPressed: () {
                   },
-                  iconSize: 20.0,
+                  iconSize: 40.0,
                 ),
                 MaterialButton(
-                  onPressed: () { },
+                  onPressed: () { Navigator.of(context).pushNamed("Records");},
                 )
               ],
             )
           )
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepPurpleAccent,

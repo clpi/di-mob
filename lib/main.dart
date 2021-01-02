@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:dimo/screens/home/home.dart';
 import 'package:dimo/screens/records/records.dart';
 import 'package:dimo/screens/user/user.dart';
+import 'package:dimo/screens/prefs/prefs.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         "Home": (BuildContext context) => MyHomePage(),
         "Records": (BuildContext context) => RecordPage(),
         "User": (BuildContext context) => UserPage(),
+        "Prefs": (BuildContext context) => PrefsPage(),
       },
       theme: ThemeData(
         textTheme: GoogleFonts.nanumPenScriptTextTheme(
