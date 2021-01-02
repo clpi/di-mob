@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:dimo/screens/home/home.dart';
 import 'package:dimo/screens/records/records.dart';
 import 'package:dimo/screens/user/user.dart';
 import 'package:dimo/screens/prefs/prefs.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
 }
 
 class MyApp extends StatelessWidget {
