@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:dimo/screens/home/home.dart';
-import 'package:dimo/screens/records/records.dart';
-import 'package:dimo/screens/user/user.dart';
-import 'package:dimo/screens/prefs/prefs.dart';
+import 'package:animate_do/animate_do.dart';
+import 'comp/app_bar.dart';
+// import 'package:firebase_core/firebase_core.dart';
+
+import 'screens/home/home.dart';
+import 'screens/records/records.dart';
+import 'screens/user/user.dart';
+import 'screens/prefs/prefs.dart';
 
 void main() async {
   runApp(MyApp());
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
 
 }
 
@@ -20,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      showPerformanceOverlay: false,
       title: 'div.is',
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{

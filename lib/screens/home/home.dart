@@ -83,18 +83,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           child: Center(
             child: Column(
               children: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.info,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  onPressed: () {
-                  },
-                  iconSize: 40.0,
-                ),
-                MaterialButton(
-                  onPressed: () { Navigator.of(context).pushNamed("Records");},
-                )
               ],
             )
           )
