@@ -4,6 +4,7 @@ import 'package:dimo/comp/card.dart';
 import 'package:dimo/screens/records/records.dart';
 import 'package:dimo/screens/prefs/prefs.dart';
 import 'package:dimo/screens/user/user.dart';
+import 'package:get/route_manager.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -33,19 +34,23 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawerScrimColor: Colors.deepPurpleAccent,
       appBar: AppBar(
         centerTitle: true,
-        actions: [
-        ],
+        actions: [],
+        elevation: 10.0,
 
         title: Text(widget.title),
         //backgroundColor: Colors.deepPurpleAccent,
       ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       drawer: Drawer(
+        semanticLabel: "drawer",
         child: Column(
           children: <Widget>[
-            DrawerHeader(child: CircleAvatar())
+            UserAccountsDrawerHeader(accountName: Text("chris"), accountEmail: Text("clp@clp.is")),
+            DrawerHeader(child: CircleAvatar(
+              child: Icon(Icons.book),
+            ))
           ]
         ),
       ),
