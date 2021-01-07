@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
         "Prefs": (BuildContext context) => PrefsPage(),
       },
       theme: ThemeData(
-        textTheme: GoogleFonts.nanumPenScriptTextTheme(
+        textTheme: GoogleFonts.cantarellTextTheme(
           Theme.of(context).textTheme,
-        ).apply(bodyColor: Colors.black87),
+        ).apply(bodyColor: Colors.white),
         primarySwatch: Colors.deepPurple,
         colorScheme: const ColorScheme.dark(),
         visualDensity: VisualDensity.adaptivePlatformDensity,

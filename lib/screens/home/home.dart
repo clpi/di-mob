@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:dimo/router.dart';
+import 'package:flutter/widgets.dart';
 import 'package:dimo/comp/card.dart';
 import 'package:dimo/screens/records/records.dart';
 import 'package:dimo/screens/prefs/prefs.dart';
@@ -47,17 +50,19 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         semanticLabel: "drawer",
         child: Column(
           children: <Widget>[
+            CupertinoActionSheet(
+              title: Text("FDSF"),
+              message: Text("fdsf"),
+            ),
             UserAccountsDrawerHeader(accountName: Text("chris"), accountEmail: Text("clp@clp.is")),
-            DrawerHeader(child: CircleAvatar(
-              child: Icon(Icons.book),
-            ))
           ]
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        iconSize: 20.0,
         type: BottomNavigationBarType.shifting,
         elevation: 2.0,
-        backgroundColor: Colors.black26,
+        backgroundColor: Colors.black38,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         unselectedLabelStyle: TextStyle(
@@ -88,17 +93,31 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           child: Center(
             child: Column(
               children: <Widget>[
+                Card(
+                  elevation: 0.4,
+                  color: Colors.black12,
+                  child: Container(
+                    child: Text("Hello", textScaleFactor: 2.0,),
+                    margin: EdgeInsets.all(20.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                    ),
+                  ),
+                  borderOnForeground: true,
+                  margin: EdgeInsets.all(20.0),
+                )
               ],
             )
           )
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepPurpleAccent,
-        onPressed: () {},
+        backgroundColor: Colors.deepOrangeAccent,
+        onPressed: () {
+        },
         tooltip: 'Increment',
-        splashColor: Colors.deepOrange,
-        child: Icon(Icons.add),
+        splashColor: Colors.deepPurpleAccent,
+        child: Icon(Icons.note_add_outlined),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
