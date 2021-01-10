@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "240922700891",
+    "firebase_url": "https://divdotis.firebaseio.com",
+    "project_id": "divdotis",
+    "storage_bucket": "divdotis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240922700891:android:71a2865094751e20cce37e",
+        "android_client_info": {
+          "package_name": "com.example.dimo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240922700891-tevol91eok2fglosjinb2v5bd4sn2haq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo_I-EgCR1BRlv24WquAwrcE8uw48c5wA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240922700891-tevol91eok2fglosjinb2v5bd4sn2haq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

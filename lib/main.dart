@@ -15,7 +15,6 @@ void main() async {
   runApp(MyApp());
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
-
 }
 
 class MyApp extends StatelessWidget {
@@ -23,30 +22,45 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      showPerformanceOverlay: false,
-      title: 'div.is',
-      debugShowCheckedModeBanner: false,
-      routes: <String, WidgetBuilder>{
-        "Home": (BuildContext context) => MyHomePage(),
-        "Records": (BuildContext context) => RecordPage(),
-        "User": (BuildContext context) => UserPage(),
-        "Prefs": (BuildContext context) => PrefsPage(),
-      },
-      theme: ThemeData(
-        textTheme: GoogleFonts.cantarellTextTheme(
-          Theme.of(context).textTheme,
-        ).apply(bodyColor: Colors.white),
-        primarySwatch: Colors.deepPurple,
-        colorScheme: const ColorScheme.dark(),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ).copyWith(
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: <TargetPlatform, PageTransitionsBuilder>{
-            TargetPlatform.android: ZoomPageTransitionsBuilder(),
-          },
+        showPerformanceOverlay: false,
+        title: 'div.is',
+        debugShowCheckedModeBanner: false,
+        routes: <String, WidgetBuilder>{
+          "Home": (BuildContext context) => MyHomePage(),
+          "Records": (BuildContext context) => RecordsPage(),
+          "User": (BuildContext context) => UserPage(),
+          "Prefs": (BuildContext context) => PrefsPage(),
+        },
+        theme: ThemeData(
+          textTheme: GoogleFonts.cantarellTextTheme(
+            Theme.of(context).textTheme,
+          ).apply(bodyColor: Colors.white),
+          primarySwatch: Colors.deepPurple,
+          colorScheme: const ColorScheme.dark(),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ).copyWith(
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: <TargetPlatform, PageTransitionsBuilder>{
+              TargetPlatform.android: ZoomPageTransitionsBuilder(),
+            },
+          ),
         ),
-      ),
-      home: MyHomePage(title: 'div.is'),
-    );
+        home: Navigator(
+          pages: [
+            MaterialPage(
+              key: ValueKey("Home"),
+              child: MyHomePage(
+                key: ValueKey("Home"),
+                title: "Home",
+              ),
+            ),
+            MaterialPage(
+              child: RecordsPage(key: ValueKey("Records"), title: "Records"),
+            )
+          ],
+          onPopPage: (route, res) => route.didPop(res),
+        )
+        // home: MyHomePage(title: 'div.is'),
+        );
   }
 }

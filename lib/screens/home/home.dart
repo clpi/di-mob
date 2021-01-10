@@ -3,6 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dimo/router.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/animation.dart';
+import '../records/records.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dimo/comp/card.dart';
 import 'package:dimo/screens/records/records.dart';
 import 'package:dimo/screens/prefs/prefs.dart';
@@ -17,8 +20,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
-
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   RecRouterDelegate _routerDelegate = RecRouterDelegate();
   TabController controller;
 
@@ -37,9 +40,20 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: Container(
+        child: Text("end"),
+      ),
+      endDrawerEnableOpenDragGesture: true,
+      primary: true,
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: null,
+          ),
+        ],
         centerTitle: true,
-        actions: [],
         elevation: 10.0,
 
         title: Text(widget.title),
@@ -48,73 +62,92 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       drawer: Drawer(
         semanticLabel: "drawer",
-        child: Column(
-          children: <Widget>[
-            CupertinoActionSheet(
-              title: Text("FDSF"),
-              message: Text("fdsf"),
-            ),
-            UserAccountsDrawerHeader(accountName: Text("chris"), accountEmail: Text("clp@clp.is")),
-          ]
-        ),
+        child: Column(children: <Widget>[
+          CupertinoActionSheet(
+            title: Text("FDSF"),
+            message: Text("fdsf"),
+          ),
+          UserAccountsDrawerHeader(
+              accountName: Text("chris"), accountEmail: Text("clp@clp.is")),
+        ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 20.0,
         type: BottomNavigationBarType.shifting,
         elevation: 2.0,
-        backgroundColor: Colors.black38,
+        onTap: (idx) {},
+        backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         unselectedLabelStyle: TextStyle(
           color: Colors.white54,
         ),
-
         items: [
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home_filled),
-
           ),
           BottomNavigationBarItem(
-              label: "Records",
-              icon: Icon(Icons.book_outlined),
-              activeIcon: Icon(Icons.book),
+            label: "Records",
+            icon: Icon(Icons.book_outlined),
+            activeIcon: Icon(Icons.book),
           ),
           BottomNavigationBarItem(
-              label: "Profile",
-              icon: Icon(Icons.person_rounded),
-              activeIcon: Icon(Icons.person_outline_rounded),
+            label: "Profile",
+            icon: Icon(Icons.person_rounded),
+            activeIcon: Icon(Icons.person_outline_rounded),
+          ),
+          BottomNavigationBarItem(
+            label: "Prefs",
+            icon: Icon(Icons.settings_rounded),
+            activeIcon: Icon(Icons.settings_outlined),
           )
         ],
       ),
-      body: Container(
+      body: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) {
+            return RecordsPage();
+          }));
+        },
         child: Container(
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                Card(
-                  elevation: 0.4,
-                  color: Colors.black12,
-                  child: Container(
-                    child: Text("Hello", textScaleFactor: 2.0,),
-                    margin: EdgeInsets.all(20.0),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                    ),
+          child: Hero(
+              tag: "mainHero",
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: [],
                   ),
-                  borderOnForeground: true,
-                  margin: EdgeInsets.all(20.0),
-                )
-              ],
-            )
-          )
+                  Card(
+                    elevation: 0.4,
+                    color: Colors.black12,
+                    child: Container(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Expanded(
+                          child: Column(children: [
+                        Text(
+                          "Card",
+                          textScaleFactor: 2.0,
+                        ),
+                        Text("subtitle"),
+                      ])),
+                      margin: EdgeInsets.all(20.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                    borderOnForeground: true,
+                    margin: EdgeInsets.all(20.0),
+                  ),
+                ],
+              )),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrangeAccent,
-        onPressed: () {
-        },
+        backgroundColor: Colors.black45,
+        foregroundColor: Colors.deepPurpleAccent,
+        onPressed: () {},
         tooltip: 'Increment',
         splashColor: Colors.deepPurpleAccent,
         child: Icon(Icons.note_add_outlined),
