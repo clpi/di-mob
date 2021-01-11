@@ -54,9 +54,9 @@ class MyApp extends StatelessWidget {
                 title: "Home",
               ),
             ),
-            MaterialPage(
-              child: RecordsPage(key: ValueKey("Records"), title: "Records"),
-            )
+            // MaterialPage(
+            //   child: RecordsPage(key: ValueKey("Records"), title: "Records"),
+            // )
           ],
           onPopPage: (route, res) => route.didPop(res),
         )

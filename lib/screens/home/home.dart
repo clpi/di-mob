@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +12,7 @@ import 'package:dimo/screens/records/records.dart';
 import 'package:dimo/screens/prefs/prefs.dart';
 import 'package:dimo/screens/user/user.dart';
 import 'package:get/route_manager.dart';
+import 'package:dimo/comp/bottom_bar.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -39,16 +41,13 @@ class _MyHomePageState extends State<MyHomePage>
 
   @override
   Widget build(BuildContext context) {
+    final bottomBar = BottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
     return Scaffold(
-      endDrawer: Container(
-        child: Text("end"),
-      ),
-      endDrawerEnableOpenDragGesture: true,
       primary: true,
       appBar: AppBar(
+        automaticallyImplyLeading: true,
         centerTitle: true,
         elevation: 10.0,
-
         title: Text(widget.title),
         //backgroundColor: Colors.deepPurpleAccent,
       ),
@@ -56,48 +55,29 @@ class _MyHomePageState extends State<MyHomePage>
       drawer: Drawer(
         semanticLabel: "drawer",
         child: Column(children: <Widget>[
-          CupertinoActionSheet(
-            title: Text("FDSF"),
-            message: Text("fdsf"),
-          ),
           UserAccountsDrawerHeader(
-              accountName: Text("chris"), accountEmail: Text("clp@clp.is")),
+              accountName: Text("chris"),
+              currentAccountPicture: const CircleAvatar(
+                child: FlutterLogo(size: 42.0),
+              ),
+              accountEmail: Text("clp@clp.is")),
+          ListTile(
+            title: Text("Profile"),
+            leading: const Icon(Icons.supervised_user_circle),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            title: Text("Preferences"),
+            leading: const Icon(Icons.settings),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          )
         ]),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 20.0,
-        type: BottomNavigationBarType.shifting,
-        elevation: 2.0,
-        onTap: (idx) {},
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        unselectedLabelStyle: TextStyle(
-          color: Colors.white54,
-        ),
-        items: [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home_filled),
-          ),
-          BottomNavigationBarItem(
-            label: "Records",
-            icon: Icon(Icons.book_outlined),
-            activeIcon: Icon(Icons.book),
-          ),
-          BottomNavigationBarItem(
-            label: "Profile",
-            icon: Icon(Icons.person_rounded),
-            activeIcon: Icon(Icons.person_outline_rounded),
-          ),
-          BottomNavigationBarItem(
-            label: "Prefs",
-            icon: Icon(Icons.settings_rounded),
-            activeIcon: Icon(Icons.settings_outlined),
-          )
-        ],
-      ),
+      bottomNavigationBar: bottomBar,
       body: GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (_) {
@@ -107,8 +87,16 @@ class _MyHomePageState extends State<MyHomePage>
             );
           }));
         },
-        child: Container(
-          child: Hero(
+        child: Center(
+          child: PageTransitionSwitcher(
+            transitionBuilder: (child, animation, secondaryAnimation) {
+              return FadeThroughTransition(
+                child: child, 
+                animation: animation, 
+                secondaryAnimation: secondaryAnimation
+               );
+            },
+            child: Hero(
               tag: "mainHero",
               child: Column(
                 children: <Widget>[
@@ -138,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage>
                   ),
                 ],
               )),
-        ),
+        )),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black45,
