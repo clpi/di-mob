@@ -46,13 +46,6 @@ class _MyHomePageState extends State<MyHomePage>
       endDrawerEnableOpenDragGesture: true,
       primary: true,
       appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            tooltip: 'Search',
-            onPressed: null,
-          ),
-        ],
         centerTitle: true,
         elevation: 10.0,
 
@@ -108,7 +101,10 @@ class _MyHomePageState extends State<MyHomePage>
       body: GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (_) {
-            return RecordsPage();
+            return RecordsPage(
+              key: ValueKey("Records"),
+              title: "Records",
+            );
           }));
         },
         child: Container(
@@ -152,37 +148,6 @@ class _MyHomePageState extends State<MyHomePage>
         splashColor: Colors.deepPurpleAccent,
         child: Icon(Icons.note_add_outlined),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
-
-class _TransitionListTile extends StatelessWidget {
-  const _TransitionListTile({
-    this.onTap,
-    this.title,
-    this.sub,
-  });
-
-  final GestureTapCallback onTap;
-  final String title;
-  final String sub;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 15.0),
-      leading: Container(
-        width: 40.0,
-        height: 40.0,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black54),
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: const Icon(Icons.play_arrow, size: 35),
-      ),
-      onTap: onTap,
-      title: Text(title),
-      subtitle: Text(sub),
     );
   }
 }
