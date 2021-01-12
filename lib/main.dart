@@ -3,7 +3,6 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
-import 'comp/app_bar.dart';
 // import 'package:firebase_core/firebase_core.dart';
 
 import 'screens/home/home.dart';
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => MyHomePage(),
-          "Records": (BuildContext context) => RecordsPage(),
+          "Records": (BuildContext context) => RecordsListPage(records: [], onTapped: (record) {}),
           "User": (BuildContext context) => UserPage(),
           "Prefs": (BuildContext context) => PrefsPage(),
         },

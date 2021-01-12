@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Record {
-  Record(this.name);
+  Record(
+    @required this.name, 
+    this.description
+   );
 
   final String name;
+  String description = "";
 }
 
 // class _Record {

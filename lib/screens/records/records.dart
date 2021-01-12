@@ -1,31 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:dimo/router.dart';
 import 'package:dimo/comp/card.dart';
+import 'package:dimo/models/record/record.dart';
+import 'package:dimo/comp/bottom_bar.dart';
+import 'package:dimo/comp/drawer.dart';
 
-class RecordsPage extends StatefulWidget {
-  RecordsPage({Key key, this.title}) : super(key: key);
-  final String title;
+class RecordsListPage extends StatefulWidget {
+
+  final List<Record> records;
+  final ValueChanged<Record> onTapped;
+
+  RecordsListPage({Key key, 
+    @required this.records,
+    @required this.onTapped
+  }) : super(key: key);
 
   @override
   _RecordsPageState createState() => _RecordsPageState();
 }
 
-class _RecordsPageState extends State<RecordsPage> {
+class _RecordsPageState extends State<RecordsListPage> {
   @override
   Widget build(BuildContext context) {
+    final drawer = DlDrawer(index: DrawerIndex.Home, key: Key("drawer"));
+    final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         elevation: 10.0,
-
-        title: Text(widget.title),
+        title: Text("Records"),
+        automaticallyImplyLeading: true,
         //backgroundColor: Colors.deepPurpleAccent,
       ),
+      drawer: drawer,
       body: Container(
         child: Center(
           child: Column(
             children: <Widget>[
               Text("Records"),
+              ListView(
+                children: [
+                  for (var rec in widget.records)
+                    ListTile(
+                      title: Text(rec.name),
+                      subtitle: Text(rec.description),
+                      onTap: () => widget.onTapped(rec),
+                    )
+                ],
+              ),
               MaterialButton(
                 onPressed: () {},
               )
@@ -33,40 +55,7 @@ class _RecordsPageState extends State<RecordsPage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 20.0,
-        type: BottomNavigationBarType.shifting,
-        elevation: 2.0,
-        onTap: (idx) {},
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white70,
-        unselectedLabelStyle: TextStyle(
-          color: Colors.white54,
-        ),
-        items: [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home_filled),
-          ),
-          BottomNavigationBarItem(
-            label: "Records",
-            icon: Icon(Icons.book_outlined),
-            activeIcon: Icon(Icons.book),
-          ),
-          BottomNavigationBarItem(
-            label: "Profile",
-            icon: Icon(Icons.person_rounded),
-            activeIcon: Icon(Icons.person_outline_rounded),
-          ),
-          BottomNavigationBarItem(
-            label: "Prefs",
-            icon: Icon(Icons.settings_rounded),
-            activeIcon: Icon(Icons.settings_outlined),
-          )
-        ],
-      ),
+      bottomNavigationBar: bottomBar,
     );
   }
 }

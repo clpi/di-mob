@@ -6,8 +6,8 @@ enum BottomBarKind {
   NoLabels,
 }
 
-class BottomBar extends StatefulWidget {
-  const BottomBar ({
+class DlBottomBar extends StatefulWidget {
+  const DlBottomBar ({
     Key key,
     @required this.restorationId,
     @required this.type,
@@ -17,10 +17,10 @@ class BottomBar extends StatefulWidget {
   final BottomBarKind type;
 
   @override 
-  _BottomBarState createState() => _BottomBarState();
+  _DlBottomBarState createState() => _DlBottomBarState();
 }
 
-class _BottomBarState extends State<BottomBar>
+class _DlBottomBarState extends State<DlBottomBar>
   with RestorationMixin {
   final RestorableInt _idx = RestorableInt(0);
 
