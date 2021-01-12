@@ -32,6 +32,10 @@ class _DlBottomBarState extends State<DlBottomBar>
     registerForRestoration(_idx, 'bottom_navigation_tab_index');
   }
 
+  void _navigate(BuildContext context) {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -60,6 +64,18 @@ class _DlBottomBarState extends State<DlBottomBar>
           )
     ];
 
+    // return BottomAppBar(
+    //     elevation: 2.0,
+    //     color: Colors.black12,
+    //     child: Row(
+    //       children: [
+    //         IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+    //         Spacer(),
+    //         IconButton(icon: Icon(Icons.search), onPressed: () {}),
+    //         IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+    //       ],
+    //     ),
+    //   );
     return BottomNavigationBar(
       items: items,
       showSelectedLabels: true,
@@ -74,7 +90,20 @@ class _DlBottomBarState extends State<DlBottomBar>
       type: BottomNavigationBarType.fixed,
       elevation: 2.0,
       onTap: (index) {
-        setState(() { _idx.value = index; });
+        setState(() { 
+          _idx.value = index; 
+        });
+        if (index == 0) {
+          Navigator.pushNamed(context, "Home");
+        } else if (index == 1) {
+          Navigator.pushNamed(context, "Records");
+        } else if (index == 2) {
+          Navigator.pushNamed(context, "User");
+        } else if (index == 3) {
+          Navigator.pushNamed(context, "Preferences");
+        } else {
+          Navigator.pushNamed(context, "Home");
+        }
       },
       // selectedItemColor: colorScheme.onPrimary,
       // unselectedItemColor: colorScheme.onPrimary.withOpacity(0.38),

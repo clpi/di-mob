@@ -16,13 +16,32 @@ class DlApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         showPerformanceOverlay: false,
+        initialRoute: "Home",
+        onGenerateRoute: (settings) {
+          if (settings.name == HomePage.routeName) {
+            // final ScreenArguments args = settings.arguments;
+            return HomePage.route();
+          } else if (settings.name == RecordsListPage.routeName) {
+            return RecordsListPage.route();
+          } else if (settings.name == UserPage.routeName) {
+            return UserPage.route();
+          } else if (settings.name == PrefsPage.routeName) {
+            return PrefsPage.route();
+          } else {
+            return HomePage.route();
+          }
+          // The code only supports PassArgumentsScreen.routeName right now.
+          // Other values need to be implemented if we add them. The assertion
+          // here will help remind us of that higher up in the call stack, since
+          // this assertion would otherwise fire somewhere in the framework.
+        },
         title: 'div.is',
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => HomePage(),
           "Records": (BuildContext context) => RecordsListPage(records: [], onTapped: (record) {}),
           "User": (BuildContext context) => UserPage(),
-          "Prefs": (BuildContext context) => PrefsPage(),
+          "Preferences": (BuildContext context) => PrefsPage(),
         },
         theme: DlTheme.theme,
         home: Navigator(
@@ -38,6 +57,8 @@ class DlApp extends StatelessWidget {
               key: ValueKey("Records"),
               child: RecordsListPage(records: [], onTapped: (record) {})
              ),
+            MaterialPage(key: ValueKey("User"), child: UserPage()),
+            MaterialPage(key: ValueKey("Preferences"), child: PrefsPage()),
             // MaterialPage(
             //   child: RecordsPage(key: ValueKey("Records"), title: "Records"),
             // )

@@ -3,6 +3,10 @@ import 'package:dimo/router.dart';
 import 'package:dimo/comp/card.dart';
 
 class UserPage extends StatefulWidget {
+  static Route<dynamic> route() => MaterialPageRoute(
+    builder: (context) => UserPage(),
+  );
+  static String routeName = "User";
   UserPage({Key key, this.title}) : super(key: key);
   final String title;
 

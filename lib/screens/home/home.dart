@@ -16,7 +16,7 @@ import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
 import 'package:dimo/screens/records/record_router.dart';
-import 'package:dimo/comp/timeline.dart';
+import 'package:dimo/comp/card.dart';
 
 class HomePage extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -24,6 +24,7 @@ class HomePage extends StatefulWidget {
   );
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
+  static String routeName = "Home";
 
 
   @override
@@ -62,7 +63,13 @@ class _HomePageState extends State<HomePage>
         automaticallyImplyLeading: true,
         centerTitle: true,
         elevation: 10.0,
-        title: Text(".is", style: TextStyle(color: Colors.white, fontSize: 21.0),),
+        title: Row(children: [
+          Icon(Icons.lightbulb_outline),
+          Divider(indent: 5,),
+          Text("div.is", style: TextStyle(color: Colors.white, fontSize: 21.0),),
+        ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        ),
         backgroundColor: Colors.deepPurpleAccent,
         actions: [
           IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
@@ -89,9 +96,15 @@ class _HomePageState extends State<HomePage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        
-                        Text("div.is", textScaleFactor: 2.0,),
-                        Text("login", textScaleFactor: 1.1),
+                        Row(children: [
+                          Icon(Icons.lock_open),
+                          Divider(indent: 5,),
+                          Text(" login", textScaleFactor: 2.0,),
+
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        )
                     ],),
                   ),
                   SingleChildScrollView(
@@ -114,16 +127,12 @@ class _HomePageState extends State<HomePage>
                             ),
                           ),
                           VerticalDivider(indent: 25.0,),
-                          Row(
-                            textBaseline: TextBaseline.alphabetic,
-                            crossAxisAlignment: CrossAxisAlignment.center, 
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              RaisedButton(onPressed: () {showAboutDialog(context: context);}, child: Text("Forgot?"),),
-                              Divider(thickness: 2.0,indent: 20.0,),
-                              RaisedButton(onPressed: () { }, child: Text("Submit"),),
-                            ],
-                          )
+                          ButtonBar(children: [
+                            RaisedButton(onPressed: () {showAboutDialog(context: context);}, child: Text("Forgot?"),),
+                            RaisedButton(onPressed: () { }, child: Text("Submit"),),
+                          ],alignment: MainAxisAlignment.center,),
+                          VerticalDivider(indent: 25.0,),
+                          DlCard(),
                         ]
                       )
 
@@ -135,11 +144,9 @@ class _HomePageState extends State<HomePage>
             ],
         )),
       ),
-      Text("page 2") ,
-      Text("page 3"),
       ]
       ),
-      bottomNavigationBar: bottomBar,
+      bottomNavigationBar: DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels),
       endDrawerEnableOpenDragGesture: true,
       resizeToAvoidBottomInset: true,
       resizeToAvoidBottomPadding: true,
@@ -151,7 +158,7 @@ class _HomePageState extends State<HomePage>
         isExtended: true,
         backgroundColor: Colors.deepPurpleAccent,
         foregroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () { _showSheet(context); },
         tooltip: 'Increment',
         splashColor: Theme.of(context).splashColor,
         child: Icon(Icons.add),
@@ -175,6 +182,54 @@ class _HomePageState extends State<HomePage>
   }
 
   void _showSheet(BuildContext context) {
+     showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        final theme = Theme.of(context);
+        // Using Wrap makes the bottom sheet height the height of the content.
+        // Otherwise, the height will be half the height of the screen.
+        return Wrap(
+          clipBehavior: Clip.antiAlias,
+          children: [
+            ListTile(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+              title: Text(
+                'Create',
+                style: theme.textTheme.headline5,
+                textAlign: TextAlign.center,
+                
+              ),
+              tileColor: Colors.deepPurpleAccent,
+            ),
+            ListTile(
+              title: Text('New fact'),
+              leading: Icon(Icons.add),
+              subtitle: Text("Create a new fact entry", style: TextStyle(color: Colors.white54)),
+              // trailing: Icon(Icons.menu_rounded)
+            ),
+            ListTile(
+              title: Text('New item'),
+              leading: Icon(Icons.lightbulb),
+              subtitle: Text("Create a new item entry", style: TextStyle(color: Colors.white54)),
+              // trailing: Icon(Icons.menu_rounded),
+            ),
+            ListTile(
+              title: Text('New record'),
+              leading: Icon(Icons.book),
+              subtitle: Text("Create a new record", style: TextStyle(color: Colors.white54)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              // trailing: Icon(Icons.menu_rounded),
+            ),
+            ListTile(
+              title: Text('New link'),
+              leading: Icon(Icons.call_merge),
+              subtitle: Text("Create a new link", style: TextStyle(color: Colors.white54)),
+              trailing: Icon(Icons.menu_rounded),
+            ),
+          ],
+        );
+      },
+    );
 
   }
 }

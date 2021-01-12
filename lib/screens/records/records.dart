@@ -7,6 +7,10 @@ import 'package:dimo/comp/drawer.dart';
 
 class RecordsListPage extends StatefulWidget {
 
+  static Route<dynamic> route() => MaterialPageRoute(
+    builder: (context) => RecordsListPage(records: [], onTapped: (rec) {}, key: ValueKey("Records"),),
+  );
+  static String routeName = "Records";
   List<Record> records;
   final ValueChanged<Record> onTapped;
 

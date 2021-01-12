@@ -14,9 +14,14 @@ class DlTheme {
           applyElevationOverlayColor: true,
           backgroundColor: Colors.black54,
           splashColor: Colors.purpleAccent,
+          cardColor: Colors.white,
           cardTheme: CardTheme(
             elevation: 4.0,
-            color: Colors.black12,
+            clipBehavior: Clip.antiAlias,
+            margin: EdgeInsets.all(3.0),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            // color: Color.fromRGBO(255, 255, 255, 0.9),
+            color: Colors.deepPurpleAccent,
           ),
           textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white),
           buttonTheme: ButtonThemeData(
