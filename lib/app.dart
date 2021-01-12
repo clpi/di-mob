@@ -1,91 +1,134 @@
-import 'package:animations/animations.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:dimo/router.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter/animation.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:dimo/comp/card.dart';
-import 'package:dimo/screens/records/records.dart';
-import 'package:dimo/screens/prefs/prefs.dart';
-import 'package:dimo/screens/user/user.dart';
-import 'package:get/route_manager.dart';
-import 'package:dimo/screens/home/home.dart';
 import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
 import 'package:dimo/screens/records/record_router.dart';
-import 'package:dimo/screens/home/home.dart';
-import 'package:dimo/screens/records/records.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'screens/home/home.dart';
+import 'screens/records/records.dart';
+import 'screens/user/user.dart';
+import 'screens/prefs/prefs.dart';
+import 'theme.dart';
 
-class DlApp extends StatefulWidget {
-  DlApp({Key key, this.title}) : super(key: key);
+class DlApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        showPerformanceOverlay: false,
+        title: 'div.is',
+        debugShowCheckedModeBanner: false,
+        routes: <String, WidgetBuilder>{
+          "Home": (BuildContext context) => HomePage(),
+          "Records": (BuildContext context) => RecordsListPage(records: [], onTapped: (record) {}),
+          "User": (BuildContext context) => UserPage(),
+          "Prefs": (BuildContext context) => PrefsPage(),
+        },
+        theme: DlTheme.theme,
+        home: Navigator(
+          pages: [
+            MaterialPage(
+              key: ValueKey("Home"),
+              child: HomePage(
+                key: ValueKey("Home"),
+                title: "Home",
+              ),
+            ),
+            MaterialPage(
+              key: ValueKey("Records"),
+              child: RecordsListPage(records: [], onTapped: (record) {})
+             ),
+            // MaterialPage(
+            //   child: RecordsPage(key: ValueKey("Records"), title: "Records"),
+            // )
+          ],
+          onPopPage: (route, res) => route.didPop(res),
+        )
+        // home: MyHomePage(title: 'div.is'),
+        );
+  }
+}
+
+class DlAppScaffold extends StatefulWidget {
+  DlAppScaffold({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _DlAppState createState() => _DlAppState();
+  _DlAppScaffoldState createState() => _DlAppScaffoldState();
+
 }
 
-class _DlAppState extends State<DlApp>
-    with SingleTickerProviderStateMixin {
-  RecordRouterDelegate _routerDelegate = RecordRouterDelegate();
-  TabController controller;
+class _DlAppScaffoldState extends State<DlAppScaffold> {
 
   int _index = 0;
+  PageController _controller;
+
 
   @override
   void initState() {
+    _controller = PageController(initialPage: 0);
     super.initState();
-    controller = TabController(length: 3, vsync: this);
   }
 
   @override
   void dispose() {
-    controller.dispose();
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
-    final dlDrawer = DlDrawer(key: Key("drawer"));
-    final dlAppBar = DlAppBar(key: Key("appBar"), title: "div.is");
-    return Scaffold(
-      primary: true,
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      bottomNavigationBar: bottomBar,
-      drawer: dlDrawer,
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        centerTitle: true,
-        elevation: 10.0,
-        title: Text("div.is", style: TextStyle(color: Colors.white, fontSize: 21.0),),
-        backgroundColor: Colors.deepPurpleAccent,
-        actions: [
-          IconButton(icon: Icon(Icons.list_alt), onPressed: () {},)
-        ],
-      ),
-      extendBodyBehindAppBar: false,
-      body: IndexedStack(
-        index: _index,
-        children: <Widget>[
-          HomePage(),
-          RecordsListPage(key: Key("recordsListPage"), records: [], onTapped: (record) {})
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        autofocus: true,
-        elevation: 4.0,
-        isExtended: true,
-        backgroundColor: Colors.deepPurpleAccent,
-        foregroundColor: Colors.white,
-        onPressed: () {},
-        tooltip: 'Increment',
-        splashColor: Colors.purpleAccent,
-        child: Icon(Icons.note_add_outlined),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  } 
+@override
+Widget build(BuildContext context) {
+  final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
+  final dlDrawer = DlDrawer(key: Key("drawer"));
+  return Scaffold(
+    primary: true,
+    floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+    bottomNavigationBar: bottomBar,
+    drawer: dlDrawer,
+    appBar: AppBar(
+      automaticallyImplyLeading: true,
+      centerTitle: true,
+      elevation: 10.0,
+      title: Text(".is", style: TextStyle(color: Colors.white, fontSize: 21.0),),
+      backgroundColor: Colors.deepPurpleAccent,
+      actions: [
+        IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _newFact(context),
+        ),
+      ],
+    ),
+    extendBodyBehindAppBar: false,
+    endDrawerEnableOpenDragGesture: true,
+    resizeToAvoidBottomInset: true,
+    resizeToAvoidBottomPadding: true,
+    floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+    floatingActionButton: FloatingActionButton(
+      autofocus: true,
+      elevation: 4.0,
+      isExtended: true,
+      backgroundColor: Colors.deepPurpleAccent,
+      foregroundColor: Colors.white,
+      onPressed: () {},
+      tooltip: 'Increment',
+      splashColor: Theme.of(context).splashColor,
+      child: Icon(Icons.work),
+    ), // This trailing comma makes auto-formatting nicer for build methods.
+    body: PageView(
+      controller: _controller,
+      children: [ 
+        HomePage(),
+        RecordsListPage(records: [], onTapped: (record) {}),
+        UserPage(),
+        PrefsPage()
+      ],
+    )
+  );
+}
+  void _newFact(BuildContext context) {
+    showAboutDialog(context: context);
+  }
+
+  void _viewRecords(BuildContext context) {
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dimo/screens/home/home.dart';
 
 class DlDrawer extends StatefulWidget {
   const DlDrawer({
@@ -60,18 +61,22 @@ class _DlDrawerState extends State<DlDrawer> {
   Widget build(BuildContext context) {
     List<Widget> drawerItems = [
       UserAccountsDrawerHeader(
-          arrowColor: Colors.deepPurple,
+          arrowColor: Colors.white,
+          onDetailsPressed: () => showAboutDialog(context: context),
           otherAccountsPictures: [ Icon(Icons.access_alarm)],
           accountName: Text("chris (clp)"),
           currentAccountPicture: const CircleAvatar(
             child: FlutterLogo(size: 42.0),
+            backgroundColor: Colors.deepPurple,
           ),
           accountEmail: Text("clp@clp")),
       ListTile(
         title: Text("Profile"),
         leading: const Icon(Icons.supervised_user_circle),
+        selectedTileColor: Colors.deepPurpleAccent,
+        focusColor: Colors.deepPurpleAccent,
         onTap: () {
-          Navigator.pop(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
         },
       ),
       ListTile(

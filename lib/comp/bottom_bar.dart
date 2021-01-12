@@ -37,7 +37,7 @@ class _DlBottomBarState extends State<DlBottomBar>
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    var items = <BottomNavigationBarItem>[
+    var items = [
           BottomNavigationBarItem(
             label: "Home",
             icon: Icon(Icons.home_outlined),
@@ -80,5 +80,20 @@ class _DlBottomBarState extends State<DlBottomBar>
       // unselectedItemColor: colorScheme.onPrimary.withOpacity(0.38),
       // backgroundColor: Colors.black
     );
+  }
+
+  Widget alt() {
+    return BottomAppBar(
+        elevation: 2.0,
+        color: Colors.black12,
+        child: Row(
+          children: [
+            IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+            Spacer(),
+            IconButton(icon: Icon(Icons.search), onPressed: () {}),
+            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+          ],
+        ),
+      );
   }
 }

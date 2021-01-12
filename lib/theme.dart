@@ -1,28 +1,54 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
-class ArchSampleTheme {
+class DlTheme {
+
   static ThemeData get theme {
     final themeData = ThemeData.dark();
     final textTheme = themeData.textTheme;
     final body1 = textTheme.bodyText1.copyWith(decorationColor: Colors.transparent);
 
-    return ThemeData.dark().copyWith(
-      primaryColor: Colors.grey[800],
-      accentColor: Colors.cyan[300],
-      buttonColor: Colors.grey[800],
-      textSelectionColor: Colors.cyan[100],
-      toggleableActiveColor: Colors.cyan[300],
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Colors.cyan[300],
-      ),
-      snackBarTheme: SnackBarThemeData(
-        backgroundColor: themeData.dialogBackgroundColor,
-        contentTextStyle: body1,
-        actionTextColor: Colors.cyan[300],
-      ),
-      textTheme: textTheme.copyWith(
-        body1: body1,
-      ),
-    );
+    return ThemeData(
+          accentColor: Colors.lightBlueAccent,
+          primaryColor: Colors.deepPurpleAccent,
+          applyElevationOverlayColor: true,
+          backgroundColor: Colors.black54,
+          splashColor: Colors.purpleAccent,
+          cardTheme: CardTheme(
+            elevation: 4.0,
+            color: Colors.black12,
+          ),
+          textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.deepPurpleAccent
+          ),
+          appBarTheme: AppBarTheme(
+            elevation: 4.0,
+            centerTitle: true,
+            color: Colors.deepPurpleAccent,
+            textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white),
+          ),
+          fontFamily: "IBM Plex Sans",
+          primarySwatch: Colors.deepPurple,
+          colorScheme: const ColorScheme.dark(),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          textSelectionColor: Colors.deepPurple,
+          toggleableActiveColor: Colors.deepPurpleAccent,
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.deepPurpleAccent,
+            elevation: 4.0,
+          ),
+          snackBarTheme: SnackBarThemeData(
+            backgroundColor: themeData.dialogBackgroundColor,
+            contentTextStyle: TextStyle(fontFamily: "IBM Plex Sans Mono", color: Colors.white),
+            actionTextColor: Colors.white,
+          ),
+        ).copyWith(
+          pageTransitionsTheme: const PageTransitionsTheme(
+            builders: <TargetPlatform, PageTransitionsBuilder>{
+              TargetPlatform.android: ZoomPageTransitionsBuilder(),
+            },
+          ),
+        );
   }
 }
