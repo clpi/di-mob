@@ -18,18 +18,20 @@ import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
 import 'package:dimo/screens/records/record_router.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   RecordRouterDelegate _routerDelegate = RecordRouterDelegate();
   TabController controller;
+
+  int _index = 0;
 
   @override
   void initState() {
@@ -57,14 +59,20 @@ class _MyHomePageState extends State<MyHomePage>
         automaticallyImplyLeading: true,
         centerTitle: true,
         elevation: 10.0,
-        title: Text("div.is"),
+        title: Text("div.is", style: TextStyle(color: Colors.white, fontSize: 21.0),),
         backgroundColor: Colors.deepPurpleAccent,
         actions: [
-          IconButton(icon: Icon(Icons.list_alt), onPressed: () {},)
+          IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => _newFact(context),
+          ),
         ],
       ),
       extendBodyBehindAppBar: false,
-      body: Container(
+      body: IndexedStack(
+        index: _index,
+        children: <Widget>[Container(
         child: Center(
           child: PageTransitionSwitcher(
             transitionBuilder: (child, animation, secondaryAnimation) {
@@ -78,6 +86,30 @@ class _MyHomePageState extends State<MyHomePage>
               tag: "mainHero",
               child: Column(
                 children: <Widget>[
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.all(24.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          TextField(
+                            decoration: const InputDecoration(
+                              labelText: "Username",
+                              hintText: 'Your username',
+                            )
+                          ),
+                          TextField(
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              labelText: "Password",
+                              hintText: 'Your password',
+                            )
+                          ),
+                        ]
+                      )
+
+                    ),
+                  ),
                   Card(
                     elevation: 0.4,
                     color: Colors.black12,
@@ -103,14 +135,36 @@ class _MyHomePageState extends State<MyHomePage>
               )),
         )),
       ),
+      Text("page 2") ,
+      Text("page 3"),
+      ]
+      ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black45,
-        foregroundColor: Colors.deepPurpleAccent,
+        autofocus: true,
+        elevation: 4.0,
+        isExtended: true,
+        backgroundColor: Colors.deepPurpleAccent,
+        foregroundColor: Colors.white,
         onPressed: () {},
         tooltip: 'Increment',
-        splashColor: Colors.deepPurpleAccent,
-        child: Icon(Icons.note_add_outlined),
+        splashColor: Theme.of(context).splashColor,
+        child: Icon(Icons.work),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   } 
+
+  void _newFact(BuildContext context) {
+    showAboutDialog(context: context);
+  }
+
+  void _viewRecords(BuildContext context) {
+    showModal(context: context, builder: (BuildContext context) {
+      return Column(
+        children: [
+          Text("Hello!"),
+          MaterialButton(onPressed: () {}),
+        ],
+       );
+    });
+  }
 }

@@ -25,15 +25,26 @@ class MyApp extends StatelessWidget {
         title: 'div.is',
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
-          "Home": (BuildContext context) => MyHomePage(),
+          "Home": (BuildContext context) => HomePage(),
           "Records": (BuildContext context) => RecordsListPage(records: [], onTapped: (record) {}),
           "User": (BuildContext context) => UserPage(),
           "Prefs": (BuildContext context) => PrefsPage(),
         },
         theme: ThemeData(
-          textTheme: GoogleFonts.cantarellTextTheme(
+          textTheme: GoogleFonts.ibmPlexSansTextTheme(
             Theme.of(context).textTheme,
           ).apply(bodyColor: Colors.white),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.deepPurpleAccent
+          ),
+          appBarTheme: AppBarTheme(
+            elevation: 4.0,
+            centerTitle: true,
+            color: Colors.white,
+            textTheme: GoogleFonts.ibmPlexSansTextTheme(
+              Theme.of(context).textTheme).apply(bodyColor: Colors.white),
+          ),
+          fontFamily: "IBM Plex Sans",
           primarySwatch: Colors.deepPurple,
           colorScheme: const ColorScheme.dark(),
           visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -48,7 +59,7 @@ class MyApp extends StatelessWidget {
           pages: [
             MaterialPage(
               key: ValueKey("Home"),
-              child: MyHomePage(
+              child: HomePage(
                 key: ValueKey("Home"),
                 title: "Home",
               ),

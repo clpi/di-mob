@@ -7,7 +7,7 @@ import 'package:dimo/comp/drawer.dart';
 
 class RecordsListPage extends StatefulWidget {
 
-  final List<Record> records;
+  List<Record> records;
   final ValueChanged<Record> onTapped;
 
   RecordsListPage({Key key, 
@@ -57,5 +57,11 @@ class _RecordsPageState extends State<RecordsListPage> {
       ),
       bottomNavigationBar: bottomBar,
     );
+  }
+
+  void _addRecord(Record record) {
+    setState(() {
+      this.widget.records.add(record);
+    });
   }
 }
