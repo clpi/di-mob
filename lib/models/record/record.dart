@@ -1,13 +1,23 @@
-import 'package:flutter/material.dart';
+enum RecordVisibility {
+  Private,
+  Public,
+  FriendsOnly
+}
 
 class Record {
-  Record(
-    @required this.name, 
-    this.description
-   );
-
   final String name;
+  final RecordVisibility visibility;
   String description = "";
+  bool starred;
+  DateTime created;
+
+  Record({
+    this.name,
+    this.visibility,
+    this.description,
+    this.starred,
+    this.created,
+  });
 }
 
 // class _Record {

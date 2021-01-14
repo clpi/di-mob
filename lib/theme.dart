@@ -9,6 +9,7 @@ class DlTheme {
     final body1 = textTheme.bodyText1.copyWith(decorationColor: Colors.transparent);
 
     return ThemeData(
+          scaffoldBackgroundColor: Color.fromRGBO(40, 35, 40, 1),
           accentColor: Colors.deepOrangeAccent,
           primaryColor: Colors.deepPurpleAccent,
           applyElevationOverlayColor: true,
@@ -18,6 +19,7 @@ class DlTheme {
           primaryColorLight: Colors.deepPurpleAccent,
           primaryColorDark: Colors.deepPurpleAccent,
           selectedRowColor: Colors.deepPurpleAccent,
+          bottomAppBarColor: Colors.deepPurpleAccent,
           cardTheme: CardTheme(
             elevation: 4.0,
             clipBehavior: Clip.antiAlias,

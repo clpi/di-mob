@@ -4,7 +4,7 @@ import 'package:dimo/comp/card.dart';
 import 'package:dimo/models/record/record.dart';
 import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
-import 'package:dimo/comp/new_sheet.dart';
+import 'package:dimo/comp/sheet.dart';
 
 class RecordsListPage extends StatefulWidget {
 

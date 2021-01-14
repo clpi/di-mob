@@ -5,36 +5,29 @@ import 'page/records/record_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'page/home/home.dart';
+import 'page/auth/login.dart';
 import 'page/records/records.dart';
 import 'page/user/user.dart';
 import 'page/prefs/prefs.dart';
 import 'theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:camera/camera.dart';
+import 'package:path/path.dart';
+
 
 class DlApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ScreenUtilInit(
+      designSize: Size(375, 812),
+      allowFontScaling: false,
+      child: MaterialApp(
         showPerformanceOverlay: false,
-        initialRoute: "Home",
-        onGenerateRoute: (settings) {
-          if (settings.name == HomePage.routeName) {
-            // final ScreenArguments args = settings.arguments;
-            return HomePage.route();
-          } else if (settings.name == RecordsListPage.routeName) {
-            return RecordsListPage.route();
-          } else if (settings.name == UserPage.routeName) {
-            return UserPage.route();
-          } else if (settings.name == PrefsPage.routeName) {
-            return PrefsPage.route();
-          } else {
-            return HomePage.route();
-          }
-          // The code only supports PassArgumentsScreen.routeName right now.
-          // Other values need to be implemented if we add them. The assertion
-          // here will help remind us of that higher up in the call stack, since
-          // this assertion would otherwise fire somewhere in the framework.
-        },
+        initialRoute: "/authenticate",
+        onGenerateRoute: _onGenerateRoute,
         title: 'div.is',
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
@@ -66,7 +59,9 @@ class DlApp extends StatelessWidget {
           onPopPage: (route, res) => route.didPop(res),
         )
         // home: MyHomePage(title: 'div.is'),
-        );
+        )
+    );
+
   }
 }
 
@@ -151,5 +146,30 @@ Widget build(BuildContext context) {
   }
 
   void _viewRecords(BuildContext context) {
+  }
+}
+
+Route<dynamic> _onGenerateRoute(RouteSettings settings) {
+  switch (settings.name) {
+    case "/":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return HomePage();
+      });
+    case "/records":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return RecordsListPage(records: [], onTapped: (record) {},);
+      });
+    case "/user":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return UserPage();
+      });
+    case "/prefs":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return PrefsPage();
+      });
+    default:
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return HomePage();
+      });
   }
 }

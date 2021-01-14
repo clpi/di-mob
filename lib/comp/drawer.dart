@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:dimo/screens/home/home.dart';
+import 'package:dimo/page/home/home.dart';
 
 class DlDrawer extends StatefulWidget {
   const DlDrawer({
-    Key key, 
+    Key key,
     this.index}) : super(key: key);
 
   final DrawerIndex index;

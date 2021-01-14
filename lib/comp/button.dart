@@ -1,22 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class MyButton extends StatelessWidget {
+class PrimaryButton extends StatelessWidget {
+  final String text;
+  final Function onPressed;
+  PrimaryButton({this.text, this.onPressed});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        print('MyButton was tapped!');
-      },
+    return InkWell(
+      onTap: this.onPressed,
       child: Container(
-        height: 36.0,
-        padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        width: double.infinity,
+        height: ScreenUtil().setHeight(50.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
-          color: Colors.lightGreen[500],
+          color: Colors.deepPurpleAccent,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Color.fromRGBO(169, 176, 185, 0.42),
+              spreadRadius: 0,
+              blurRadius: 8,
+              offset: Offset(0, 2), // changes position of shadow
+            ),
+          ],
         ),
         child: Center(
-          child: Text('Engage'),
+          child: Text(
+            this.text,
+            style: GoogleFonts.roboto(
+              color: Colors.white,
+              fontSize: 16.0,
+            ),
+          ),
         ),
       ),
     );
