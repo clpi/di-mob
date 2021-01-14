@@ -1,13 +1,13 @@
-import 'package:dimo/comp/bottom_bar.dart';
-import 'package:dimo/comp/drawer.dart';
-import 'package:dimo/comp/app_bar.dart';
-import 'package:dimo/screens/records/record_router.dart';
+import 'comp/bottom_bar.dart';
+import 'comp/drawer.dart';
+import 'comp/app_bar.dart';
+import 'page/records/record_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'screens/home/home.dart';
-import 'screens/records/records.dart';
-import 'screens/user/user.dart';
-import 'screens/prefs/prefs.dart';
+import 'page/home/home.dart';
+import 'page/records/records.dart';
+import 'page/user/user.dart';
+import 'page/prefs/prefs.dart';
 import 'theme.dart';
 
 class DlApp extends StatelessWidget {
@@ -137,7 +137,7 @@ Widget build(BuildContext context) {
     ), // This trailing comma makes auto-formatting nicer for build methods.
     body: PageView(
       controller: _controller,
-      children: [ 
+      children: [
         HomePage(),
         RecordsListPage(records: [], onTapped: (record) {}),
         UserPage(),

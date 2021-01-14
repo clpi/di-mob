@@ -4,7 +4,6 @@ import 'package:dimo/comp/card.dart';
 import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
-import 'package:dimo/screens/records/record_router.dart';
 
 class PrefsPage extends StatefulWidget {
   PrefsPage({Key key, this.title}) : super(key: key);
@@ -144,7 +143,7 @@ class _PrefsPageState extends State<PrefsPage> {
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  } 
+  }
 
   void _newFact(BuildContext context) {
     showAboutDialog(context: context);
@@ -166,7 +165,7 @@ class _PrefsPageState extends State<PrefsPage> {
                 'Create',
                 style: theme.textTheme.headline5,
                 textAlign: TextAlign.center,
-                
+
               ),
               tileColor: Colors.deepPurpleAccent,
             ),

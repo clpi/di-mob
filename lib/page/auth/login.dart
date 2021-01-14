@@ -3,26 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/animation.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
-import '../records/records.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:dimo/comp/card.dart';
-import 'package:dimo/screens/records/records.dart';
-import 'package:dimo/screens/prefs/prefs.dart';
-import 'package:dimo/screens/user/user.dart';
-import 'package:get/route_manager.dart';
 import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
-import 'package:dimo/screens/records/record_router.dart';
-import 'package:dimo/comp/card.dart';
+import '../records/record_router.dart';
 
-class HomePage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
-    builder: (context) => HomePage(),
+    builder: (context) => LoginPage(),
   );
-  HomePage({Key key, this.title}) : super(key: key);
+  LoginPage({Key key, this.title}) : super(key: key);
   final String title;
   static String routeName = "Home";
 
@@ -31,7 +21,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _HomePageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   RecordRouterDelegate _routerDelegate = RecordRouterDelegate();
   TabController controller;
@@ -72,10 +62,10 @@ class _HomePageState extends State<HomePage>
         ),
         backgroundColor: Colors.deepPurpleAccent,
         actions: [
-          IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
+          // IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () => _newFact(context),
+            onPressed: () => _showSheet(context),
           ),
         ],
       ),
@@ -115,7 +105,7 @@ class _HomePageState extends State<HomePage>
                         children: <Widget>[
                           TextField(
                             decoration: const InputDecoration(
-                              labelText: "Username",
+                              labelText: "E-mail",
                               hintText: 'Your username',
                             )
                           ),
@@ -132,7 +122,7 @@ class _HomePageState extends State<HomePage>
                             RaisedButton(onPressed: () { }, child: Text("Submit"),),
                           ],alignment: MainAxisAlignment.center,),
                           VerticalDivider(indent: 25.0,),
-                          DlCard(),
+                          // DlCard(),
                         ]
                       )
 
@@ -164,7 +154,7 @@ class _HomePageState extends State<HomePage>
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  } 
+  }
 
   void _newFact(BuildContext context) {
     showAboutDialog(context: context);
@@ -197,7 +187,7 @@ class _HomePageState extends State<HomePage>
                 'Create',
                 style: theme.textTheme.headline5,
                 textAlign: TextAlign.center,
-                
+
               ),
               tileColor: Colors.deepPurpleAccent,
             ),

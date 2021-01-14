@@ -39,6 +39,7 @@ dependencies:
 #  url_launcher: ^5.7.10
 #  share: ^0.6.5
   get: ^3.24.0
+  background: any
   shared_preferences: ^0.5.12
   http: ^0.12.2
   animations: ^1.1.2
@@ -68,7 +69,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
+
   flutter_driver:
     sdk: flutter
 

@@ -36,3 +36,26 @@ class _DlAppBarState extends State<DlAppBar> {
     );
  }
 }
+
+class DlSliver extends State<DlAppBar> {
+  bool _pinned = true;
+  bool _snap = true;
+  bool _floating = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+        slivers: [
+          SliverAppBar(
+              pinned: this._pinned,
+              snap: this._snap,
+              floating: this._floating,
+              expandedHeight: 160.0,
+              flexibleSpace: FlexibleSpaceBar(
+                  title: Text(this.widget.title),
+              ),
+          )
+        ]
+    );
+  }
+}
