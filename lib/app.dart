@@ -12,7 +12,6 @@ import 'page/prefs/prefs.dart';
 import 'theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:camera/camera.dart';
 import 'package:path/path.dart';
 
 
@@ -21,10 +20,7 @@ class DlApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: Size(375, 812),
-      allowFontScaling: false,
-      child: MaterialApp(
+      return MaterialApp(
         showPerformanceOverlay: false,
         initialRoute: "/authenticate",
         onGenerateRoute: _onGenerateRoute,
@@ -59,9 +55,7 @@ class DlApp extends StatelessWidget {
           onPopPage: (route, res) => route.didPop(res),
         )
         // home: MyHomePage(title: 'div.is'),
-        )
-    );
-
+      );
   }
 }
 
@@ -100,20 +94,6 @@ Widget build(BuildContext context) {
     floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     bottomNavigationBar: bottomBar,
     drawer: dlDrawer,
-    appBar: AppBar(
-      automaticallyImplyLeading: true,
-      centerTitle: true,
-      elevation: 10.0,
-      title: Text(".is", style: TextStyle(color: Colors.white, fontSize: 21.0),),
-      backgroundColor: Colors.deepPurpleAccent,
-      actions: [
-        IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () => _newFact(context),
-        ),
-      ],
-    ),
     extendBodyBehindAppBar: false,
     endDrawerEnableOpenDragGesture: true,
     resizeToAvoidBottomInset: true,

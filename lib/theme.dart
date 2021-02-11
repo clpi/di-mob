@@ -9,7 +9,8 @@ class DlTheme {
     final body1 = textTheme.bodyText1.copyWith(decorationColor: Colors.transparent);
 
     return ThemeData(
-          scaffoldBackgroundColor: Color.fromRGBO(40, 35, 40, 1),
+          // scaffoldBackgroundColor: Color.fromRGBO(40, 35, 40, 1),
+          scaffoldBackgroundColor: Color.fromRGBO(245, 235, 245, 1),
           accentColor: Colors.deepOrangeAccent,
           primaryColor: Colors.deepPurpleAccent,
           applyElevationOverlayColor: true,
@@ -19,7 +20,7 @@ class DlTheme {
           primaryColorLight: Colors.deepPurpleAccent,
           primaryColorDark: Colors.deepPurpleAccent,
           selectedRowColor: Colors.deepPurpleAccent,
-          bottomAppBarColor: Colors.deepPurpleAccent,
+          bottomAppBarColor: Color(0xff3ecf60),
           cardTheme: CardTheme(
             elevation: 4.0,
             clipBehavior: Clip.antiAlias,
@@ -28,15 +29,16 @@ class DlTheme {
             // color: Color.fromRGBO(255, 255, 255, 0.9),
             color: Colors.deepPurpleAccent,
           ),
-          textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white),
+          textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.black26),
           buttonTheme: ButtonThemeData(
             buttonColor: Colors.deepPurpleAccent
           ),
           appBarTheme: AppBarTheme(
             elevation: 4.0,
             centerTitle: true,
-            color: Colors.deepPurpleAccent,
-            textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white),
+            color: Color(0xff3ecf60),
+            // color: Colors.lightGreen,
+            textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.black26),
           ),
           fontFamily: "IBM Plex Sans",
           primarySwatch: Colors.deepPurple,
@@ -45,7 +47,9 @@ class DlTheme {
           textSelectionColor: Colors.deepPurple,
           toggleableActiveColor: Colors.deepPurpleAccent,
           floatingActionButtonTheme: FloatingActionButtonThemeData(
-            backgroundColor: Colors.deepPurpleAccent,
+            // backgroundColor: Color(0xff54b378),
+            backgroundColor: Colors.greenAccent,
+            foregroundColor: Colors.black26,
             elevation: 4.0,
           ),
           snackBarTheme: SnackBarThemeData(

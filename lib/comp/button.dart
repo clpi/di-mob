@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -12,7 +11,6 @@ class PrimaryButton extends StatelessWidget {
       onTap: this.onPressed,
       child: Container(
         width: double.infinity,
-        height: ScreenUtil().setHeight(50.0),
         decoration: BoxDecoration(
           color: Colors.deepPurpleAccent,
           borderRadius: BorderRadius.circular(8.0),
