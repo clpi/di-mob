@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dimo/comp/sheet.dart';
+import 'package:dimo/models/user/user.dart';
 
 enum AppBarType {
   Tabbed,
@@ -7,12 +8,25 @@ enum AppBarType {
 }
 
 class DlAppBar extends StatefulWidget {
-  DlAppBar({Key key, this.title}) : super(key: key);
+  DlAppBar({Key key, this.title, this.user}) : super(key: key);
 
   final String title;
+  final User user;
 
   @override
   _DlAppBarState createState() => _DlAppBarState();
+
+  static CircleAvatar userIcon() {
+    return CircleAvatar(
+      radius: 25.0,
+      foregroundColor: Color(0xff2a282f),
+      backgroundColor: Color(0xffB0Fe76),
+      child: Icon(
+        Icons.supervised_user_circle,
+        size: 20.0,
+      ),
+    );
+  }
 
   static CircleAvatar calendarIcon() {
     return CircleAvatar(
@@ -31,6 +45,11 @@ class DlAppBar extends StatefulWidget {
       automaticallyImplyLeading: true,
       centerTitle: true,
       elevation: 10.0,
+      // backgroundColor: Colors.black, // status bar color
+      brightness: Brightness.dark, // status bar brightness
+      // leading: userIcon(),
+      // leadingWidth: 25,
+      
       // bottom: TabBar(
       //   tabs: [
       //     Tab(icon: Icon(Icons.home)),
@@ -44,8 +63,8 @@ class DlAppBar extends StatefulWidget {
       ],
         mainAxisAlignment: MainAxisAlignment.center,
       ),
-      backgroundColor: Theme.of(context).appBarTheme.color,
-      actions: [
+      // backgroundColor: Theme.of(context).appBarTheme.color,
+      actions: <Widget>[
         // IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
         IconButton(
           icon: calendarIcon(),

@@ -67,14 +67,15 @@ class _DlDrawerState extends State<DlDrawer> {
           accountName: Text("chris (clp)"),
           currentAccountPicture: const CircleAvatar(
             child: FlutterLogo(size: 42.0),
-            backgroundColor: Color(0xffb0fe76),
+            foregroundColor: Color(0xffb0fe76),
+            backgroundColor: Color(0xff3a383f),
           ),
           accountEmail: Text("clp@clp.is")),
       ListTile(
         title: Text("Profile"),
         leading: const Icon(Icons.supervised_user_circle),
         selectedTileColor: Colors.deepPurpleAccent,
-        focusColor: Colors.deepPurpleAccent,
+        focusColor: Color(0xb0fe76),
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
         },
@@ -112,6 +113,7 @@ class _DlDrawerState extends State<DlDrawer> {
         semanticLabel: "drawer",
         elevation: 5.0,
         child: Container(
+          color: Color(0xff2a282f),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

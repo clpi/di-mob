@@ -1,5 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DlTheme {
 
@@ -7,12 +8,21 @@ class DlTheme {
     final themeData = ThemeData.dark();
     final textTheme = themeData.textTheme;
     final body1 = textTheme.bodyText1.copyWith(decorationColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(
+         SystemUiOverlayStyle.dark.copyWith(
+          //  statusBarColor: Colors.white,
+           systemNavigationBarColor: Colors.black,
+           statusBarIconBrightness: Brightness.dark,
+           statusBarBrightness: Brightness.dark,
+           systemNavigationBarDividerColor: Colors.white,
+           systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
 
     return ThemeData(
-          scaffoldBackgroundColor: Color(0xff1a181f),
+          scaffoldBackgroundColor: Color(0xff262029),
           // scaffoldBackgroundColor: Color.fromRGBO(245, 235, 245, 1),
           // accentColor: Color(0xffffffff),
-          primaryColor: Color(0xffb0fe76),
           applyElevationOverlayColor: true,
           backgroundColor: Colors.black54,
           splashColor: Color(0xFF8ade50),
@@ -45,6 +55,8 @@ class DlTheme {
               opacity: 100.0,          
             ),
             color: Color(0xff0a080f),
+            brightness: Brightness.light,
+            // color: Color(0xff3a383f),
             textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white),
           ),
           iconTheme: IconThemeData(
