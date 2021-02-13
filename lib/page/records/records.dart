@@ -5,6 +5,8 @@ import 'package:dimo/models/record/record.dart';
 import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/sheet.dart';
+import 'package:dimo/comp/fab.dart';
+import 'package:dimo/comp/app_bar.dart';
 
 class RecordsListPage extends StatefulWidget {
 
@@ -28,37 +30,20 @@ class _RecordsPageState extends State<RecordsListPage> {
   final sheet = DlSheet();
   @override
   Widget build(BuildContext context) {
-    final drawer = DlDrawer(index: DrawerIndex.Home, key: Key("drawer"));
+    final dlDrawer = DlDrawer(index: DrawerIndex.Home, key: Key("drawer"));
     final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        centerTitle: true,
-        elevation: 10.0,
-        title: Row(children: [
-          Icon(Icons.book_outlined),
-          Divider(indent: 5,),
-          Text("records", style: TextStyle(color: Colors.white, fontSize: 21.0),),
-        ],
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
-        backgroundColor: Colors.deepPurpleAccent,
-        actions: [
-          // IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => sheet.show(context),
-          ),
-        ],
-      ),
-    floatingActionButton: FloatingActionButton(
-        onPressed: () {sheet.show(context);},
-        child: Icon(Icons.add),
-    ),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      appBar: DlAppBar(key: Key("appBar"), title: "records").bar(context),
+      body: body(context),
+      floatingActionButton: DlFab(sheet: DlSheet()),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels),
-      drawer: drawer,
-      body: Container(
+      drawer: dlDrawer,
+    );
+  }
+
+  Widget body(BuildContext context) {
+    return Container(
         child: Center(
           child: Column(
             children: <Widget>[
@@ -79,8 +64,8 @@ class _RecordsPageState extends State<RecordsListPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
+
   }
 
   void _addRecord(Record record) {
