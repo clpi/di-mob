@@ -17,11 +17,11 @@ class DlAppBar extends StatefulWidget {
   static CircleAvatar calendarIcon() {
     return CircleAvatar(
       radius: 25.0,
-      backgroundColor: Colors.greenAccent,
+      foregroundColor: Color(0xff2a282f),
+      backgroundColor: Color(0xffB0Fe76),
       child: Icon(
         Icons.calendar_today,
         size: 20.0,
-        color: Colors.white,
       ),
     );
   }

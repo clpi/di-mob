@@ -67,9 +67,9 @@ class _DlDrawerState extends State<DlDrawer> {
           accountName: Text("chris (clp)"),
           currentAccountPicture: const CircleAvatar(
             child: FlutterLogo(size: 42.0),
-            backgroundColor: Color(0xff44d367),
+            backgroundColor: Color(0xffb0fe76),
           ),
-          accountEmail: Text("clp@clp")),
+          accountEmail: Text("clp@clp.is")),
       ListTile(
         title: Text("Profile"),
         leading: const Icon(Icons.supervised_user_circle),
