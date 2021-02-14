@@ -1,6 +1,8 @@
-import 'comp/bottom_bar.dart';
-import 'comp/drawer.dart';
 import 'comp/app_bar.dart';
+import 'package:dimo/comp/fab.dart';
+import 'package:dimo/comp/bottom_bar.dart';
+import 'package:dimo/comp/drawer.dart';
+import 'package:dimo/comp/sheet.dart';
 import 'page/records/record_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -90,26 +92,6 @@ Widget build(BuildContext context) {
   final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
   final dlDrawer = DlDrawer(key: Key("drawer"));
   return Scaffold(
-    primary: true,
-    floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-    bottomNavigationBar: bottomBar,
-    drawer: dlDrawer,
-    extendBodyBehindAppBar: false,
-    endDrawerEnableOpenDragGesture: true,
-    resizeToAvoidBottomInset: true,
-    resizeToAvoidBottomPadding: true,
-    floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-    floatingActionButton: FloatingActionButton(
-      autofocus: true,
-      elevation: 4.0,
-      isExtended: true,
-      backgroundColor: Colors.deepPurpleAccent,
-      foregroundColor: Colors.white,
-      onPressed: () {},
-      tooltip: 'Increment',
-      splashColor: Theme.of(context).splashColor,
-      child: Icon(Icons.work),
-    ), // This trailing comma makes auto-formatting nicer for build methods.
     body: PageView(
       controller: _controller,
       children: [
@@ -128,6 +110,7 @@ Widget build(BuildContext context) {
   void _viewRecords(BuildContext context) {
   }
 }
+
 
 Route<dynamic> _onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -152,4 +135,24 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
         return HomePage();
       });
   }
+}
+
+Widget _appLayout(BuildContext context) {
+  final dlBottom = DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels);
+  final dlDrawer = DlDrawer(key: Key("drawer"));
+  final dlFab = DlFab(sheet: DlSheet());
+  final dlAppBar = DlAppBar(key: Key("appBar"), title: "devisa").bar(context);
+  return Scaffold(
+    primary: true,
+    floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+    drawer: dlDrawer,
+    appBar: dlAppBar,
+    bottomNavigationBar: dlBottom,
+    endDrawerEnableOpenDragGesture: true,
+    resizeToAvoidBottomInset: true,
+    resizeToAvoidBottomPadding: true,
+    floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+    floatingActionButton: dlFab,
+    drawerEnableOpenDragGesture: true,
+  );
 }

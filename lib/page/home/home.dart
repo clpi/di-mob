@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:dimo/app.dart';
 import 'package:dimo/comp/sheet.dart';
 import 'package:dimo/comp/card.dart';
 import 'package:dimo/comp/input.dart';
@@ -54,22 +55,10 @@ class _HomePageState extends State<HomePage>
     final dlDrawer = DlDrawer(key: Key("drawer"));
     final dlAppBar = DlAppBar(key: Key("appBar"), title: "div.is");
 
-    return Scaffold(
-      primary: true,
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      drawer: dlDrawer,
-      appBar: DlAppBar(key: Key("appBar"), title: "devisa").bar(context),
-      body: body(context),
-      bottomNavigationBar: DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels),
-      endDrawerEnableOpenDragGesture: true,
-      resizeToAvoidBottomInset: true,
-      resizeToAvoidBottomPadding: true,
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: DlFab(sheet: DlSheet()),
-    );
+    return _layout(context, _body(context));
   }
 
-  Widget body(BuildContext context) {
+  Widget _body(BuildContext context) {
     return SingleChildScrollView(
       child: Flexible(
           flex: 2,
@@ -87,24 +76,7 @@ class _HomePageState extends State<HomePage>
               child: Column(
                 children: [
                   sectionHeader("Dashboard", Icons.dashboard_rounded),
-                  SizedBox(height: 15),
                   section(),
-                  Ink(
-                    child: InkWell(
-                      onTap: () {},
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.home,
-                            color: Colors.white,
-                            size: 35,
-                          ),
-                          Text("Home")
-                        ],
-                      ),
-                    ),
-                  ),
                   sectionHeader("Records", Icons.book_online_rounded),
                   section(),
                   sectionHeader("Items", Icons.book_online_rounded),
@@ -169,3 +141,23 @@ class _HomePageState extends State<HomePage>
 
 }
 
+Widget _layout(BuildContext context, Widget body) {
+  final dlBottom = DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels);
+  final dlDrawer = DlDrawer(key: Key("drawer"));
+  final dlFab = DlFab(sheet: DlSheet());
+  final dlAppBar = DlAppBar(key: Key("appBar"), title: "devisa").bar(context);
+  return Scaffold(
+    primary: true,
+    floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+    drawer: dlDrawer,
+    appBar: dlAppBar,
+    body: body,
+    bottomNavigationBar: dlBottom,
+    endDrawerEnableOpenDragGesture: true,
+    resizeToAvoidBottomInset: true,
+    resizeToAvoidBottomPadding: true,
+    floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+    floatingActionButton: dlFab,
+    drawerEnableOpenDragGesture: true,
+  );
+}

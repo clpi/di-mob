@@ -34,7 +34,8 @@ class DlAppBar extends StatefulWidget {
       foregroundColor: Color(0xff2a282f),
       backgroundColor: Color(0xffB0Fe76),
       child: Icon(
-        Icons.calendar_today,
+        // Icons.calendar_today,
+        Icons.more_vert,
         size: 20.0,
       ),
     );
@@ -45,6 +46,7 @@ class DlAppBar extends StatefulWidget {
       automaticallyImplyLeading: true,
       centerTitle: true,
       elevation: 10.0,
+      // bottom: 
       // backgroundColor: Colors.black, // status bar color
       brightness: Brightness.dark, // status bar brightness
       // leading: userIcon(),
@@ -69,6 +71,9 @@ class DlAppBar extends StatefulWidget {
         IconButton(
           icon: calendarIcon(),
           onPressed: () => DlListSheet().show(context),
+          enableFeedback: true,
+          iconSize: 25.0,
+          tooltip: "See your records",
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 enum SheetType {
@@ -24,6 +25,57 @@ class DlSheet extends StatefulWidget{
 
 }
 
+class DlSheetItem extends StatefulWidget {
+  final String title;
+  final String descr;
+  final Icon icon;
+
+  const DlSheetItem({
+    this.title,
+    this.descr,
+    this.icon
+  }) : super();
+
+  @override 
+  _DlSheetItemState createState() => _DlSheetItemState();
+}
+
+class _DlSheetItemState extends State<DlSheetItem> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override 
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(this.widget.title, style: TextStyle(color: Colors.white)),
+      leading: this.widget.icon,
+      subtitle: Text(this.widget.descr, style: TextStyle(color: Colors.white60)),
+      onLongPress: () {},
+      onTap: () {},
+      trailing: PopupMenuButton(
+        icon: Icon(Icons.more_vert),
+        itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+          const PopupMenuItem(child: ListTile(
+            leading: Icon(Icons.add),
+            title: Text("New fact"),
+          )),
+          const PopupMenuItem(child: ListTile(
+            leading: Icon(Icons.room_preferences),
+            title: Text("Fact preferences"),
+          ))
+        ],
+      ),
+      tileColor: Color(0xff1a181f),
+      focusColor: Color(0xff4a484f),
+      // trailing: Icon(Icons.menu_rounded),
+    );
+
+  }
+}
+
 class _DlSheetState extends State<DlSheet> {
   @override
   Widget build(BuildContext context) {
@@ -44,39 +96,10 @@ class _DlSheetState extends State<DlSheet> {
               // tileColor: Color(0xffb0fe76),
               tileColor: Color(0xffb0fe76),
             ),
-            ListTile(
-              title: Text('New fact', style: TextStyle(color: Colors.white)),
-              leading: Icon(Icons.add),
-              subtitle: Text("Create a new fact entry", style: TextStyle(color: Colors.white60)),
-              tileColor: Color(0xff1a181f),
-              focusColor: Color(0xff4a484f),
-              // trailing: Icon(Icons.menu_rounded)
-            ),
-            ListTile(
-              title: Text('New item', style: TextStyle(color: Colors.white)),
-              leading: Icon(Icons.lightbulb, color: Colors.white),
-              subtitle: Text("Create a new item entry", style: TextStyle(color: Colors.white60)),
-              tileColor: Color(0xff1a181f),
-              focusColor: Color(0xff4a484f),
-              // trailing: Icon(Icons.menu_rounded),
-            ),
-            ListTile(
-              title: Text('New record', style: TextStyle(color: Colors.white)),
-              leading: Icon(Icons.book),
-              subtitle: Text("Create a new record", style: TextStyle(color: Colors.white60)),
-              tileColor: Color(0xff1a181f),
-              focusColor: Color(0xff4a484f),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              // trailing: Icon(Icons.menu_rounded),
-            ),
-            ListTile(
-              title: Text('New link', style: TextStyle(color: Colors.white)),
-              leading: Icon(Icons.call_merge),
-              subtitle: Text("Create a new link", style: TextStyle(color: Colors.white60)),
-              tileColor: Color(0xff1a181f),
-              focusColor: Color(0xff4a484f),
-              // trailing: Icon(Icons.menu_rounded),
-            ),
+            DlSheetItem(title: "New record", descr: "Create a new record", icon: Icon(Icons.book)),
+            DlSheetItem(title: "New item", descr: "Create a new item", icon: Icon(Icons.account_tree)),
+            DlSheetItem(title: "New fact", descr: "Create a new fact entry", icon: Icon(Icons.add)),
+            DlSheetItem(title: "New link", descr: "Create a link between two items", icon: Icon(Icons.call_merge)),
           ]
       );
 
@@ -106,51 +129,26 @@ class _DlListSheetState extends State<DlListSheet> {
   Widget build(BuildContext context) {
     return Wrap(
         clipBehavior: Clip.antiAlias,
-        runAlignment: WrapAlignment.start,
+        spacing: 4.0,
+        alignment: WrapAlignment.start,
+        runAlignment: WrapAlignment.spaceEvenly,
         children: [
-          ListTile(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-            title: Text(
-              'Your Records',
-              style: Theme.of(context).textTheme.headline5,
-              textAlign: TextAlign.center,
+            ListTile(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+              title: Text(
+              'Your Data',
+                style: Theme.of(context).textTheme.headline5.copyWith(color: Color(0xff1a181f)),
+                textAlign: TextAlign.center,
 
+              ),
+              // tileColor: Color(0xffb0fe76),
+              tileColor: Color(0xffb0fe76),
             ),
-            tileColor: Colors.deepPurpleAccent,
-          ),
-          ListTile(
-            title: Text('Record 1', style: TextStyle(color: Colors.white)),
-            leading: Icon(Icons.menu_book_outlined),
-            subtitle: Text("Description of record 1", style: TextStyle(color: Colors.white60)),
-            tileColor: Color(0xff1a181f),
-            focusColor: Color(0xff4a484f),
-            // trailing: Icon(Icons.menu_rounded)
-          ),
-          ListTile(
-            title: Text('Record 2', style: TextStyle(color: Colors.white)),
-            leading: Icon(Icons.menu_book_outlined),
-            subtitle: Text("Description of record 1", style: TextStyle(color: Colors.white60)),
-            tileColor: Color(0xff1a181f),
-            focusColor: Color(0xff4a484f),
-            // trailing: Icon(Icons.menu_rounded),
-          ),
-          ListTile(
-            title: Text('Record 4', style: TextStyle(color: Colors.white)),
-            leading: Icon(Icons.menu_book_outlined),
-            subtitle: Text("Description of record 1", style: TextStyle(color: Colors.white60)),
-            tileColor: Color(0xff1a181f),
-            focusColor: Color(0xff4a484f),
-            // trailing: Icon(Icons.menu_rounded),
-          ),
-          ListTile(
-            title: Text('Record 5', style: TextStyle(color: Colors.white)),
-            leading: Icon(Icons.menu_book_outlined),
-            subtitle: Text("Description of record 1", style: TextStyle(color: Colors.white60)),
-            tileColor: Color(0xff1a181f),
-            focusColor: Color(0xff4a484f),
-            // trailing: Icon(Icons.menu_rounded),
-          ),
-        ],
+              DlSheetItem(title: "Record 1", descr: "First record description", icon: Icon(Icons.book)),
+              DlSheetItem(title: "Record 2", descr: "Record 2 descrrriiipttt", icon: Icon(Icons.library_books)),
+              DlSheetItem(title: "Record 3", descr: "Doo da dee da doo", icon: Icon(Icons.book_online)),
+              DlSheetItem(title: "Record 4", descr: "Record 4 description", icon: Icon(Icons.menu_book)),
+          ]
       );
 
   }
