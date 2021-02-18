@@ -133,7 +133,7 @@ packages:
       name: fl_chart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.2"
+    version: "0.12.3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -207,7 +207,7 @@ packages:
       name: get
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.24.0"
+    version: "3.25.4"
   google_fonts:
     dependency: "direct main"
     description:
@@ -534,14 +534,14 @@ packages:
       name: syncfusion_flutter_charts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "18.4.42"
+    version: "18.4.43"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "18.4.42"
+    version: "18.4.43"
   synchronized:
     dependency: transitive
     description:

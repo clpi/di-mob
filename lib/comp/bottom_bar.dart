@@ -83,7 +83,7 @@ class _DlBottomBarState extends State<DlBottomBar>
       currentIndex: _idx.value,
       selectedFontSize: textTheme.caption.fontSize,
       unselectedFontSize: textTheme.caption.fontSize,
-      iconSize: 20.0,
+      iconSize: 23.0,
       backgroundColor: Theme.of(context).bottomAppBarColor,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white70,

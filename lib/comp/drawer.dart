@@ -66,13 +66,13 @@ class _DlDrawerState extends State<DlDrawer> {
           otherAccountsPictures: [ Icon(Icons.access_alarm)],
           accountName: Text("chris (clp)"),
           currentAccountPicture: const CircleAvatar(
-            child: FlutterLogo(size: 42.0),
-            foregroundColor: Color(0xffb0fe76),
-            backgroundColor: Color(0xff3a383f),
+            child: Icon(Icons.person_outlined),
+            foregroundColor: Color(0xff0a080f),
+            backgroundColor: Color(0xffb0fe76),
           ),
           accountEmail: Text("clp@clp.is")),
       ListTile(
-        title: Text("Profile"),
+        title: Text("Profile", style: TextStyle(color: Colors.white)),
         leading: const Icon(Icons.supervised_user_circle),
         selectedTileColor: Colors.deepPurpleAccent,
         focusColor: Color(0xb0fe76),
@@ -81,28 +81,28 @@ class _DlDrawerState extends State<DlDrawer> {
         },
       ),
       ListTile(
-        title: Text("Feedback"),
+        title: Text("Feedback", style: TextStyle(color: Colors.white)),
         leading: const Icon(Icons.feedback),
         onTap: () {
           Navigator.pop(context);
         },
       ),
       ListTile(
-        title: Text("Contact"),
+        title: Text("Contact", style: TextStyle(color: Colors.white)),
         leading: const Icon(Icons.contact_mail),
         onTap: () {
           Navigator.pop(context);
         },
       ),
       ListTile(
-        title: Text("Preferences"),
+        title: Text("Preferences", style: TextStyle(color: Colors.white)),
         leading: const Icon(Icons.settings),
         onTap: () {
           Navigator.pop(context);
         },
       ),
       ListTile(
-        title: Text("Account"),
+        title: Text("Account", style: TextStyle(color: Colors.white)),
         leading: const Icon(Icons.account_box),
         onTap: () {
           Navigator.pop(context);

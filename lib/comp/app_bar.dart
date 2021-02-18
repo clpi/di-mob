@@ -22,7 +22,7 @@ class DlAppBar extends StatefulWidget {
       foregroundColor: Color(0xff2a282f),
       backgroundColor: Color(0xffB0Fe76),
       child: Icon(
-        Icons.supervised_user_circle,
+        Icons.person_outline_rounded,
         size: 20.0,
       ),
     );
@@ -68,13 +68,20 @@ class DlAppBar extends StatefulWidget {
       // backgroundColor: Theme.of(context).appBarTheme.color,
       actions: <Widget>[
         // IconButton(icon: Icon(Icons.list_alt), onPressed: () => _viewRecords(context),),
+        // IconButton(
+        //   icon: calendarIcon(),
+        //   onPressed: () => DlListSheet().show(context),
+        //   enableFeedback: true,
+        //   iconSize: 25.0,
+        //   tooltip: "See your records",
+        // ),
         IconButton(
-          icon: calendarIcon(),
+          icon: userIcon(),
           onPressed: () => DlListSheet().show(context),
           enableFeedback: true,
           iconSize: 25.0,
-          tooltip: "See your records",
-        ),
+          tooltip: 'user',
+        )
       ],
     );
   }
