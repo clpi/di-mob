@@ -57,9 +57,9 @@ class DlCard extends Card {
   }
 }
 
-class RecordCard extends StatelessWidget {
+class RecCard extends StatelessWidget {
   final Record record;
-  RecordCard({this.record});
+  RecCard({this.record});
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -4,6 +4,8 @@ import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/sheet.dart';
 import 'page/records/record_router.dart';
+import 'package:dimo/page/auth/login.dart';
+import 'package:dimo/page/auth/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'page/home/home.dart';
@@ -15,10 +17,19 @@ import 'theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path/path.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class DlApp extends StatelessWidget {
   // This widget is the root of your application.
+
+  ThemeData themeData(ThemeData theme) {
+    return theme.copyWith(
+      textTheme: GoogleFonts.sourceSansProTextTheme(
+        theme.textTheme,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,29 +44,35 @@ class DlApp extends StatelessWidget {
           "Records": (BuildContext context) => RecordsListPage(records: [], onTapped: (record) {}),
           "User": (BuildContext context) => UserPage(),
           "Preferences": (BuildContext context) => PrefsPage(),
+          "Login": (BuildContext context) => LoginPage(),
+          "Signup": (BuildContext context) => SignupPage(),
         },
         theme: DlTheme.theme,
-        home: Navigator(
-          pages: [
-            MaterialPage(
-              key: ValueKey("Home"),
-              child: HomePage(
-                key: ValueKey("Home"),
-                title: "Home",
-              ),
-            ),
-            MaterialPage(
-              key: ValueKey("Records"),
-              child: RecordsListPage(records: [], onTapped: (record) {})
-             ),
-            MaterialPage(key: ValueKey("User"), child: UserPage()),
-            MaterialPage(key: ValueKey("Preferences"), child: PrefsPage()),
-            // MaterialPage(
-            //   child: RecordsPage(key: ValueKey("Records"), title: "Records"),
-            // )
-          ],
-          onPopPage: (route, res) => route.didPop(res),
-        )
+        home: Scaffold(
+        ),
+        // home: Navigator(
+        //   pages: [
+        //     MaterialPage(
+        //       key: ValueKey("Home"),
+        //       child: HomePage(
+        //         key: ValueKey("Home"),
+        //         title: "Home",
+        //       ),
+        //     ),
+        //     MaterialPage(
+        //       key: ValueKey("Records"),
+        //       child: RecordsListPage(records: [], onTapped: (record) {})
+        //      ),
+        //     MaterialPage(key: ValueKey("User"), child: UserPage()),
+        //     MaterialPage(key: ValueKey("Preferences"), child: PrefsPage()),
+        //     MaterialPage(key: ValueKey("Login"), child: LoginPage()),
+        //     MaterialPage(key: ValueKey("Signup"), child: SignupPage()),
+        //     // MaterialPage(
+        //     //   child: RecordsPage(key: ValueKey("Records"), title: "Records"),
+        //     // )
+        //   ],
+        //   onPopPage: (route, res) => route.didPop(res),
+        // )
         // home: MyHomePage(title: 'div.is'),
       );
   }

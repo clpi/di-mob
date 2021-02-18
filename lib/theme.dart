@@ -4,6 +4,19 @@ import 'package:flutter/services.dart';
 
 class DlTheme {
 
+  static Color lightPrimary = Color(0xfffcfcff);
+  static Color darkPrimary = Color(0xff1f1f1f);
+  static Color green = Color(0xffb0fe76);
+  static Color greenAccent = Color(0xffb0fe76);
+  static Color lightBG = Color(0xfffcfcff);
+  static Color darkBG = Color(0xff262029);
+
+
+  static ThemeData lightTheme = ThemeData(
+
+  );
+
+  // dark theme
   static ThemeData get theme {
     final themeData = ThemeData.dark();
     final textTheme = themeData.textTheme;
@@ -40,11 +53,16 @@ class DlTheme {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
             // color: Color.fromRGBO(255, 255, 255, 0.9),
             color: Color(0xffb0fe76),
+
           ),
           // textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.black26),
-          textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.white30),
+          textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(
+            bodyColor: Colors.white30, 
+            decorationColor: Color(0xffb0fe76),
+            displayColor: Color(0xffb0fe76)
+          ),
           buttonTheme: ButtonThemeData(
-            buttonColor: Colors.deepPurpleAccent
+            buttonColor: Color(0xffb0fe76),
           ),
           appBarTheme: AppBarTheme(
             elevation: 4.0,
@@ -71,9 +89,14 @@ class DlTheme {
           fontFamily: "IBM Plex Sans",
           colorScheme: const ColorScheme.dark(),
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          textSelectionColor: Colors.deepPurple,
+          textSelectionColor: Color(0xffb0fe76),
           toggleableActiveColor: Color(0xffb0fe76),
+          accentColor: Color(0xffb0fe76),
+          buttonBarTheme: ButtonBarThemeData(
+            buttonTextTheme: ButtonTextTheme.normal,
+          ),
           floatingActionButtonTheme: FloatingActionButtonThemeData(
+          
             // backgroundColor: Color(0xff54b378),
             // backgroundColor: Colors.greenAccent,
             // backgroundColor: Colors.purpleAccent,

@@ -4,12 +4,12 @@ import 'package:dimo/comp/button.dart';
 import 'forms.dart';
 import 'tab.dart';
 
-class Authentication extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _AuthenticationState createState() => _AuthenticationState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _AuthenticationState extends State<Authentication> {
+class _LoginPageState extends State<LoginPage> {
   String active = "login";
 
   void setActive(String val) {

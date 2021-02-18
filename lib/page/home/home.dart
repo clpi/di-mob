@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dimo/app.dart';
 import 'package:dimo/comp/sheet.dart';
+import 'package:dimo/comp/record_card.dart';
 import 'package:dimo/comp/card.dart';
 import 'package:dimo/comp/input.dart';
 import 'package:dimo/comp/fab.dart';
@@ -41,6 +42,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
+    controller = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -71,14 +73,17 @@ class _HomePageState extends State<HomePage>
               )
             ),
             child: Padding(
-              padding: EdgeInsets.fromLTRB(10, 5, 20, 16),
+              padding: EdgeInsets.fromLTRB(7, 3, 7, 3),
               child: Column(
                 children: [
-                  sectionHeader("Dashboard", Icons.dashboard_rounded),
-                  section(),
+                  // sectionHeader("Dashboard", Icons.dashboard_rounded),
+                  // section(),
                   sectionHeader("Records", Icons.book_online_rounded),
+                  RecordCard(name: "Record 1", desc: "A sample record", items: ["Item 1", "Item 2"]),
+                  RecordCard(name: "Record 2", desc: "Another sample record", items: ["Item 1", "Item 2"]),
                   section(),
                   sectionHeader("Items", Icons.book_online_rounded),
+                  RecordCard(name: "Record 1", desc: "A sample record", items: ["Item 1", "Item 2"]),
                   section(),
                   sectionHeader("Stats", Icons.book_online_rounded),
                   section(),
@@ -113,12 +118,11 @@ class _HomePageState extends State<HomePage>
 
     return Container(
       // width: 100,
-      height: 100,
       decoration: BoxDecoration(
         // color: Color(0xff3a383f),
         borderRadius: BorderRadius.circular(10),
       ),
-      margin: EdgeInsets.fromLTRB(30, 20, 10, 20),
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
