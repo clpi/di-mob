@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
 class RecordCard extends StatefulWidget {
-  RecordCard({Key key, this.name, this.desc, this.items}) : super(key: key);
+  RecordCard({
+    Key key, 
+    this.name, 
+    this.desc, 
+    this.items,
+    this.created,
+  }) : super(key: key);
   final String name;
   final String desc;
+  final DateTime created;
   final List<String> items;
 
   @override
@@ -22,9 +29,10 @@ class _RecordCardState extends State<RecordCard> {
         child: Column(
           children: [
             ListTile(
-              leading: Icon(Icons.more_vert_rounded, color: Color(0xffffffff).withOpacity(0.8),),
-              trailing: CircleAvatar(
-                child: Icon(Icons.person_outline_rounded, size: 15,),
+              // trailing: Icon(Icons.more_vert_rounded, color: Color(0xffffffff).withOpacity(0.8),),
+              trailing: Text("4d 1h 38m ago", style: TextStyle(color: Colors.white24)),
+              leading: CircleAvatar(
+                child: Icon(Icons.person_outline_rounded, size: 15, ),
                 backgroundColor: Color(0xffb0fe76),
                 foregroundColor: Color(0xff0a080f),
                 minRadius: 10,
@@ -43,28 +51,171 @@ class _RecordCardState extends State<RecordCard> {
               ),
             ),
             ButtonBar(
-              alignment: MainAxisAlignment.end,
+              alignment: MainAxisAlignment.center,
               buttonMinWidth: 10.0,
               children: [
-                FlatButton(
-                  textColor: const Color(0xffb0fe76),
-                  onPressed: () {
-                    // Perform some action
-                  },
-                  child: const Text('Edit'),
-                ),
-                FlatButton(
-                  textColor: const Color(0xffb0fe76),
-                  onPressed: () {
-                    // Perform some action
-                  },
-                  child: const Text('Goto'),
-                ),
+                // FlatButton(
+                //   textColor: const Color(0xffb0fe76),
+                //   onPressed: () {
+                //     // Perform some action
+                //   },
+                //   child: const Text('Add'),
+                // ),
+                // FlatButton(
+                //   textColor: const Color(0xffb0fe76),
+                //   onPressed: () {
+                //     // Perform some action
+                //   },
+                //   child: const Text('Edit'),
+                // ),
+                // FlatButton(
+                //   textColor: const Color(0xffb0fe76),
+                //   onPressed: () {
+                //     // Perform some action
+                //   },
+                //   child: const Text('View'),
+                // ),
+                newBtn(context),
+                shareBtn(context),
+                usersBtn(context),
+                optionsBtn(context)
+                // IconButton(icon: Icon(Icons.add_circle_outline_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Add a new item or fact"),
+                // IconButton(icon: Icon(Icons.view_list_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Add a new item or fact"),
+                // IconButton(icon: Icon(Icons.share_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Share this record",),
+                // IconButton(icon: Icon(Icons.more_vert_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Share this record",),
               ],
             ),
           ],
         ),
 
     );
+  }
+
+  ButtonBar newBtn(BuildContext context) {
+    return ButtonBar(
+      alignment: MainAxisAlignment.start,
+      layoutBehavior: ButtonBarLayoutBehavior.padded,
+      buttonPadding: EdgeInsets.only(left: 0.0),
+      overflowButtonSpacing: 0.0,
+      buttonMinWidth: 20,
+
+      children: [
+        IconButton(
+          icon: Icon(Icons.add_circle_outline_outlined,  ), 
+          onPressed: () {}, 
+          color: Colors.white, 
+          iconSize: 20, 
+          tooltip: "Add a new item or fact",
+          padding: EdgeInsets.zero,
+          alignment: Alignment.bottomLeft,
+          constraints: BoxConstraints(maxWidth: 30),
+          enableFeedback: true,
+        ),
+        FlatButton(
+          minWidth: 20,
+          child: Text("20", textAlign: TextAlign.start, style: TextStyle(color: Colors.white38, fontSize: 14),),
+          visualDensity: VisualDensity.compact,
+          onPressed: () {},
+          padding: EdgeInsets.all(0),
+          clipBehavior: Clip.antiAlias,
+        )
+       ],
+     );
+  }
+
+  ButtonBar shareBtn(BuildContext context) {
+    return ButtonBar(
+      alignment: MainAxisAlignment.start,
+      layoutBehavior: ButtonBarLayoutBehavior.padded,
+      buttonPadding: EdgeInsets.only(left: 0.0),
+      overflowButtonSpacing: 0.0,
+      buttonMinWidth: 20,
+
+      children: [
+        IconButton(
+          icon: Icon(Icons.share_outlined,  ), 
+          onPressed: () {}, 
+          color: Colors.white, 
+          iconSize: 20, 
+          tooltip: "Share this record",
+          padding: EdgeInsets.zero,
+          alignment: Alignment.bottomLeft,
+          constraints: BoxConstraints(maxWidth: 30),
+          enableFeedback: true,
+        ),
+        FlatButton(
+          minWidth: 10,
+          child: Text("13", textAlign: TextAlign.start, style: TextStyle(color: Colors.white38, fontSize: 14),),
+          visualDensity: VisualDensity.compact,
+          onPressed: () {},
+          padding: EdgeInsets.all(0),
+          clipBehavior: Clip.antiAlias,
+        )
+       ],
+     );
+  }
+
+  ButtonBar usersBtn(BuildContext context) {
+    return ButtonBar(
+      alignment: MainAxisAlignment.start,
+      layoutBehavior: ButtonBarLayoutBehavior.padded,
+      buttonPadding: EdgeInsets.only(left: 0.0),
+      overflowButtonSpacing: 0.0,
+      buttonMinWidth: 20,
+
+      children: [
+        IconButton(
+          icon: Icon(Icons.person_outlined,  ), 
+          onPressed: () {}, 
+          color: Colors.white, 
+          iconSize: 20, 
+          tooltip: "View record users",
+          padding: EdgeInsets.zero,
+          alignment: Alignment.bottomLeft,
+          constraints: BoxConstraints(maxWidth: 30),
+          enableFeedback: true,
+        ),
+        FlatButton(
+          minWidth: 10,
+          child: Text("6", textAlign: TextAlign.start, style: TextStyle(color: Colors.white38, fontSize: 14),),
+          visualDensity: VisualDensity.compact,
+          onPressed: () {},
+          padding: EdgeInsets.all(0),
+          clipBehavior: Clip.antiAlias,
+        )
+       ],
+     );
+  }
+
+  ButtonBar optionsBtn(BuildContext context) {
+    return ButtonBar(
+      alignment: MainAxisAlignment.start,
+      layoutBehavior: ButtonBarLayoutBehavior.padded,
+      buttonPadding: EdgeInsets.only(left: 0.0),
+      overflowButtonSpacing: 0.0,
+      buttonMinWidth: 20,
+
+      children: [
+        IconButton(
+          icon: Icon(Icons.more_vert_outlined,  ), 
+          onPressed: () {}, 
+          color: Colors.white, 
+          iconSize: 20, 
+          tooltip: "Share this record",
+          padding: EdgeInsets.zero,
+          alignment: Alignment.bottomLeft,
+          constraints: BoxConstraints(maxWidth: 30),
+          enableFeedback: true,
+        ),
+        // FlatButton(
+        //   minWidth: 10,
+        //   child: Text("13", textAlign: TextAlign.start, style: TextStyle(color: Colors.white38, fontSize: 14),),
+        //   visualDensity: VisualDensity.compact,
+        //   onPressed: () {},
+        //   padding: EdgeInsets.all(0),
+        //   clipBehavior: Clip.antiAlias,
+        // )
+       ],
+     );
   }
 }

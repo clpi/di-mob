@@ -65,12 +65,12 @@ class DlTheme {
             shape: CircularNotchedRectangle(),
           ),
           cardTheme: CardTheme(
-            elevation: 3.0,
+            elevation: 2.0,
             clipBehavior: Clip.antiAlias,
-            margin: EdgeInsets.all(6.0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-            // color: Color.fromRGBO(255, 255, 255, 0.9),
-            color: Colors.white.withOpacity(0.1),
+            margin: EdgeInsets.all(8.0),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            color: Colors.white.withOpacity(0.11),
+            shadowColor: Colors.black54,
 
           ),
           accentColorBrightness: Brightness.light,
