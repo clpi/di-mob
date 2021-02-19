@@ -14,10 +14,11 @@ class _RecordCardState extends State<RecordCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      borderOnForeground: true,
-      elevation: 2.0,
-      color: Colors.black12,
-        clipBehavior: Clip.antiAlias,
+      // borderOnForeground: true,
+      // elevation: Theme.of(context).cardTheme.elevation,
+      // color: Theme.of(context).cardTheme.color,
+      // clipBehavior: Clip.antiAlias,
+      // margin: EdgeInsets.all(7.0),
         child: Column(
           children: [
             ListTile(
@@ -43,6 +44,7 @@ class _RecordCardState extends State<RecordCard> {
             ),
             ButtonBar(
               alignment: MainAxisAlignment.end,
+              buttonMinWidth: 10.0,
               children: [
                 FlatButton(
                   textColor: const Color(0xffb0fe76),

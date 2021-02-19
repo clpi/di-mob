@@ -84,9 +84,6 @@ class _DlBottomBarState extends State<DlBottomBar>
       selectedFontSize: textTheme.caption.fontSize,
       unselectedFontSize: textTheme.caption.fontSize,
       iconSize: 23.0,
-      backgroundColor: Theme.of(context).bottomAppBarColor,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.white70,
       type: BottomNavigationBarType.fixed,
       elevation: 2.0,
       onTap: (index) {

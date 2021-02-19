@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import 'comp/app_bar.dart';
 import 'package:dimo/comp/fab.dart';
 import 'package:dimo/comp/bottom_bar.dart';
@@ -37,7 +39,7 @@ class DlApp extends StatelessWidget {
         showPerformanceOverlay: false,
         initialRoute: "/authenticate",
         onGenerateRoute: _onGenerateRoute,
-        title: 'div.is',
+        title: 'devisa',
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
           "Home": (BuildContext context) => HomePage(),
@@ -48,8 +50,10 @@ class DlApp extends StatelessWidget {
           "Signup": (BuildContext context) => SignupPage(),
         },
         theme: DlTheme.theme,
-        home: Scaffold(
-        ),
+        // theme: ThemeData.from(colorScheme: ColorScheme.dark(), textTheme: GoogleFonts.aBeeZeeTextTheme(),),
+        // home: Scaffold(
+        // ),
+        home: LoginPage(),
         // home: Navigator(
         //   pages: [
         //     MaterialPage(
