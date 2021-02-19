@@ -48,14 +48,20 @@ class DlTheme {
           // bottomAppBarColor: Color(0xff0a080f),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: Colors.white.withOpacity(0.09),
-            elevation: 3.0,
+            elevation: 8.0,
+            unselectedIconTheme: IconThemeData(color: Colors.white70, opacity: 1.0, size: 25),
+            selectedIconTheme: IconThemeData(color: Colors.white, opacity: 1.0, size: 20),
+            selectedLabelStyle: GoogleFonts.sourceSansPro().copyWith(fontWeight: FontWeight.bold),
+            unselectedLabelStyle: GoogleFonts.sourceSansPro(),
+            showUnselectedLabels: false,
+            showSelectedLabels: true,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white70,
             type: BottomNavigationBarType.fixed,
           ),
           bottomAppBarTheme: BottomAppBarTheme(
             color: Colors.white.withOpacity(0.12),
-            elevation: 3.0,
+            elevation: 8.0,
             shape: CircularNotchedRectangle(),
           ),
           cardTheme: CardTheme(
@@ -66,6 +72,14 @@ class DlTheme {
             // color: Color.fromRGBO(255, 255, 255, 0.9),
             color: Colors.white.withOpacity(0.1),
 
+          ),
+          accentColorBrightness: Brightness.light,
+          bottomSheetTheme: BottomSheetThemeData(
+            backgroundColor: Color(0xff1a181f),
+            modalBackgroundColor: Color(0xff0a080f),
+            clipBehavior: Clip.antiAlias,
+            elevation: 3.0,
+            modalElevation: 5.0,
           ),
           // textTheme: GoogleFonts.ibmPlexSansTextTheme().apply(bodyColor: Colors.black26),
           // textTheme: GoogleFonts.firaSansTextTheme(),
