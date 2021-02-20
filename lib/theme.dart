@@ -56,7 +56,7 @@ class DlBottomNavigationBarTheme {
 
   static final BottomNavigationBarThemeData dark = BottomNavigationBarThemeData(
     backgroundColor: Colors.white.withOpacity(0.09),
-    elevation: 8.0,
+    elevation: 10.0,
     unselectedIconTheme: IconThemeData(color: DlPalette.white70, size: 25),
     selectedIconTheme: IconThemeData(color: DlPalette.white, size: 20),
     selectedLabelStyle: GoogleFonts.sourceSansPro().copyWith(fontWeight: FontWeight.bold),
@@ -65,7 +65,7 @@ class DlBottomNavigationBarTheme {
     showSelectedLabels: true,
     selectedItemColor: DlPalette.white,
     unselectedItemColor: DlPalette.white70,
-    type: BottomNavigationBarType.fixed,
+    type: BottomNavigationBarType.shifting,
   );
 
   static final BottomNavigationBarThemeData light = BottomNavigationBarThemeData(
@@ -93,8 +93,8 @@ class DlSheetTheme {
 
   static BottomSheetThemeData get dark {
     return BottomSheetThemeData(
-      backgroundColor: DlPalette.darkestGray,
-      modalBackgroundColor: DlPalette.black,
+      backgroundColor: DlPalette.darkGray,
+      modalBackgroundColor: DlPalette.darkGray,
       clipBehavior: Clip.antiAlias,
       elevation: 3.0,
       modalElevation: 5.0,
@@ -172,7 +172,7 @@ class DlTheme {
 
     return ThemeData(
       scaffoldBackgroundColor: DlPalette.darkGray,
-      // applyElevationOverlayColor: true,
+      applyElevationOverlayColor: true,
       backgroundColor: Colors.black54,
       splashColor: DlPalette.greenAccent,
       canvasColor: Color.fromRGBO(40,40,40,1),
@@ -180,7 +180,7 @@ class DlTheme {
       primaryColorDark: DlPalette.green,
       selectedRowColor: DlPalette.green,
       bottomNavigationBarTheme: DlBottomNavigationBarTheme.dark,
-      bottomAppBarTheme: DlBottomNavigationBarTheme.darkAppBar,
+      // bottomAppBarTheme: DlBottomNavigationBarTheme.darkAppBar,
       accentColorBrightness: Brightness.light,
       bottomSheetTheme: DlSheetTheme.dark,
       textTheme: DlTextTheme.dark,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dimo/page/home/home.dart';
+import 'package:dimo/view/home/dash.dart';
+import 'package:dimo/view/auth/login.dart';
 
 class DlDrawer extends StatefulWidget {
   const DlDrawer({
@@ -71,13 +72,24 @@ class _DlDrawerState extends State<DlDrawer> {
             backgroundColor: Color(0xffb0fe76),
           ),
           accountEmail: Text("clp@clp.is")),
+           Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'Header',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ),
+              Divider(
+                height: 1,
+                thickness: 1,
+              ),
       ListTile(
         title: Text("Profile", style: TextStyle(color: Colors.white)),
         leading: const Icon(Icons.supervised_user_circle),
         selectedTileColor: Colors.deepPurpleAccent,
         focusColor: Color(0xb0fe76),
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => HomeDashPage()));
         },
       ),
       ListTile(
@@ -108,18 +120,29 @@ class _DlDrawerState extends State<DlDrawer> {
           Navigator.pop(context);
         },
       ),
+      ListTile(
+        title: Text("Log out", style: TextStyle(color: Colors.white)),
+        leading: const Icon(Icons.logout),
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {return LoginPage(); }));
+        },
+      ),
     ];
     return Drawer(
         semanticLabel: "drawer",
         elevation: 5.0,
-        child: Container(
-          color: Color(0xff2a282f),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[] + drawerItems,
-          ),
+        child: ListView(
+
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+          ] + drawerItems,
+          // color: Color(0xff2a282f),
+          // width: double.infinity,
+          // child: Column(
+          //   crossAxisAlignment: CrossAxisAlignment.stretch,
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: <Widget>[] + drawerItems,
+          // ),
         ),
       );
   }

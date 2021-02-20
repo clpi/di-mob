@@ -5,16 +5,23 @@ import 'package:dimo/comp/fab.dart';
 import 'package:dimo/comp/bottom_bar.dart';
 import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/sheet.dart';
-import 'page/records/record_router.dart';
-import 'package:dimo/page/auth/login.dart';
-import 'package:dimo/page/auth/signup.dart';
+
+import 'package:dimo/view/auth/login.dart';
+import 'package:dimo/view/auth/signup.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'page/home/home.dart';
-import 'page/auth/login.dart';
-import 'page/records/records.dart';
-import 'page/user/user.dart';
-import 'page/prefs/prefs.dart';
+
+import 'package:dimo/view/prefs/prefs.dart';
+
+import 'package:dimo/view/home.dart';
+import 'package:dimo/view/home/dash.dart';
+import 'package:dimo/view/home/user.dart';
+import 'package:dimo/view/home/community.dart';
+import 'package:dimo/view/home/records.dart';
+
+import 'package:dimo/models/record/record.dart';
+
 import 'theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,35 +31,25 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DlApp extends StatelessWidget {
   // This widget is the root of your application.
-
-  ThemeData themeData(ThemeData theme) {
-    return theme.copyWith(
-      textTheme: GoogleFonts.sourceSansProTextTheme(
-        theme.textTheme,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
       return MaterialApp(
         showPerformanceOverlay: false,
-        initialRoute: "/authenticate",
+        initialRoute: "Login",
         onGenerateRoute: _onGenerateRoute,
-        title: 'devisa',
+        title: 'd',
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
-          "Home": (BuildContext context) => HomePage(),
-          "Records": (BuildContext context) => RecordsListPage(records: [], onTapped: (record) {}),
-          "User": (BuildContext context) => UserPage(),
+          "Home": (BuildContext context) => HomeView(),
+          "Dash": (BuildContext context) => HomeDashPage(),
+          "Records": (BuildContext context) => HomeRecordsPage(records: [], onTapped: (record) {}),
+          "User": (BuildContext context) => HomeUserPage(),
+          "Community": (BuildContext context) => HomeCommunityPage(),
           "Preferences": (BuildContext context) => PrefsPage(),
           "Login": (BuildContext context) => LoginPage(),
           "Signup": (BuildContext context) => SignupPage(),
         },
         theme: DlTheme.dark,
-        // theme: ThemeData.from(colorScheme: ColorScheme.dark(), textTheme: GoogleFonts.aBeeZeeTextTheme(),),
-        // home: Scaffold(
-        // ),
         home: LoginPage(),
         // home: Navigator(
         //   pages: [
@@ -110,16 +107,14 @@ class _DlAppScaffoldState extends State<DlAppScaffold> {
 
 @override
 Widget build(BuildContext context) {
-  final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
-  final dlDrawer = DlDrawer(key: Key("drawer"));
   return Scaffold(
     body: PageView(
       controller: _controller,
       children: [
-        HomePage(),
-        RecordsListPage(records: [], onTapped: (record) {}),
-        UserPage(),
-        PrefsPage()
+        HomeDashPage(),
+        HomeRecordsPage(records: [], onTapped: (record) {}),
+        HomeUserPage(),
+        HomeCommunityPage()
       ],
     )
   );
@@ -137,15 +132,19 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case "/":
       return MaterialPageRoute(builder: (BuildContext context) {
-        return HomePage();
+        return HomeDashPage();
       });
     case "/records":
       return MaterialPageRoute(builder: (BuildContext context) {
-        return RecordsListPage(records: [], onTapped: (record) {},);
+        return HomeRecordsPage(records: [], onTapped: (record) {},);
       });
     case "/user":
       return MaterialPageRoute(builder: (BuildContext context) {
-        return UserPage();
+        return HomeUserPage();
+      });
+    case "/community":
+      return MaterialPageRoute(builder: (BuildContext context) {
+        return HomeCommunityPage();
       });
     case "/prefs":
       return MaterialPageRoute(builder: (BuildContext context) {
@@ -153,13 +152,13 @@ Route<dynamic> _onGenerateRoute(RouteSettings settings) {
       });
     default:
       return MaterialPageRoute(builder: (BuildContext context) {
-        return HomePage();
+        return LoginPage();
       });
   }
 }
 
 Widget _appLayout(BuildContext context) {
-  final dlBottom = DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels);
+  final dlBottom = DlBottomBar(currentIndex: 0, key: Key(""), type: BottomBarKind.Labels);
   final dlDrawer = DlDrawer(key: Key("drawer"));
   final dlFab = DlFab(sheet: DlSheet());
   final dlAppBar = DlAppBar(key: Key("appBar"), title: "devisa").bar(context);

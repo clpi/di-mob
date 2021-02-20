@@ -29,9 +29,7 @@ class _PrefsPageState extends State<PrefsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
     final dlDrawer = DlDrawer(key: Key("drawer"));
-    final dlAppBar = DlAppBar(key: Key("appBar"), title: "div.is");
     return Scaffold(
       primary: true,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
@@ -125,7 +123,7 @@ class _PrefsPageState extends State<PrefsPage> {
       Text("page 3"),
       ]
       ),
-      bottomNavigationBar: DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels),
+      // bottomNavigationBar: DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels),
       endDrawerEnableOpenDragGesture: true,
       resizeToAvoidBottomInset: true,
       resizeToAvoidBottomPadding: true,

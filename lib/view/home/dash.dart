@@ -1,4 +1,4 @@
-import 'package:dimo/page/records/records.dart';
+import 'package:dimo/view/home/records.dart';
 import 'package:dimo/theme.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animations/animations.dart';
@@ -19,20 +19,22 @@ import 'package:dimo/models/record/record.dart';
 import 'package:dimo/util.dart';
 import '../records/record_router.dart';
 
-class HomePage extends StatefulWidget {
+class HomeDashPage extends StatefulWidget {
+
   static Route<dynamic> route() => MaterialPageRoute(
-    builder: (context) => HomePage(),
+    builder: (context) => HomeDashPage(),
   );
-  HomePage({Key key, this.title}) : super(key: key);
+
+  HomeDashPage({Key key, this.title}) : super(key: key);
   final String title;
   static String routeName = "Home";
 
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeDashPageState createState() => _HomeDashPageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _HomeDashPageState extends State<HomeDashPage>
     with SingleTickerProviderStateMixin {
   RecordRouterDelegate _routerDelegate = RecordRouterDelegate();
   TabController controller;
@@ -54,11 +56,12 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    final bottomBar = DlBottomBar(key: Key("bottomBar"), restorationId: "bottom_bar", type: BottomBarKind.Labels);
+    final bottomBar = DlBottomBar(key: Key("bottomBar"), currentIndex: 0, type: BottomBarKind.Labels);
     final dlDrawer = DlDrawer(key: Key("drawer"));
     final dlAppBar = DlAppBar(key: Key("appBar"), title: "div.is");
+    final body = _body(context);
 
-    return _layout(context, _body(context));
+    return body;
   }
 
   Widget _body(BuildContext context) {
@@ -147,7 +150,7 @@ class _HomePageState extends State<HomePage>
 }
 
 Widget _layout(BuildContext context, Widget body) {
-  final dlBottom = DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels);
+  final dlBottom = DlBottomBar(currentIndex: 0, key: Key(""), type: BottomBarKind.Labels);
   final dlDrawer = DlDrawer(key: Key("drawer"));
   final dlFab = DlFab(sheet: DlSheet());
   final dlAppBar = DlAppBar(key: Key("appBar"), title: "devisa").bar(context);

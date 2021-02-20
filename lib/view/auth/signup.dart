@@ -4,13 +4,13 @@ import 'package:dimo/comp/button.dart';
 import 'forms.dart';
 import 'tab.dart';
 
-class LoginPage extends StatefulWidget {
+class SignupPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  String active = "login";
+class _SignupPageState extends State<SignupPage> {
+  String active = "Signup";
 
   void setActive(String val) {
     setState(() {
@@ -33,6 +33,12 @@ class _LoginPageState extends State<LoginPage> {
                       scale: 1.5,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.25,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/pattern.png"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -55,15 +61,15 @@ class _LoginPageState extends State<LoginPage> {
                   )
                 ],
               ),
-              AuthTab(
-                active: active,
-                setActive: setActive,
-              ),
+              // AuthTab(
+              //   active: active,
+              //   setActive: setActive,
+              // ),
               SizedBox(
                 height: 40.0,
               ),
               AnimatedCrossFade(
-                firstChild: LoginForm(),
+                firstChild: RegisterForm(),
                 secondChild: RegisterForm(),
                 crossFadeState: active == "register"
                     ? CrossFadeState.showSecond

@@ -4,13 +4,13 @@ import 'package:dimo/comp/button.dart';
 import 'forms.dart';
 import 'tab.dart';
 
-class SignupPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _SignupPageState createState() => _SignupPageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
-  String active = "Signup";
+class _LoginPageState extends State<LoginPage> {
+  String active = "login";
 
   void setActive(String val) {
     setState(() {
@@ -33,12 +33,6 @@ class _SignupPageState extends State<SignupPage> {
                       scale: 1.5,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.25,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/pattern.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
                       ),
                     ),
                   ),
@@ -56,20 +50,20 @@ class _SignupPageState extends State<SignupPage> {
                           fontWeight: FontWeight.w800,
                         ),
                       ),
-                      color: Colors.deepPurpleAccent,
+                      // color: Colors.deepPurpleAccent,
                     ),
                   )
                 ],
               ),
-              AuthTab(
-                active: active,
-                setActive: setActive,
-              ),
+              // AuthTab(
+              //   active: active,
+              //   setActive: setActive,
+              // ),
               SizedBox(
                 height: 40.0,
               ),
               AnimatedCrossFade(
-                firstChild: RegisterForm(),
+                firstChild: LoginForm(),
                 secondChild: RegisterForm(),
                 crossFadeState: active == "register"
                     ? CrossFadeState.showSecond

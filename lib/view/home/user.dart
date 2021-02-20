@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:dimo/router.dart';
 import 'package:dimo/comp/card.dart';
 
-class UserPage extends StatefulWidget {
+class HomeUserPage extends StatefulWidget {
+
   static Route<dynamic> route() => MaterialPageRoute(
-    builder: (context) => UserPage(),
+    builder: (context) => HomeUserPage(),
   );
+
   static String routeName = "User";
-  UserPage({Key key, this.title}) : super(key: key);
+  HomeUserPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
   _UserPageState createState() => _UserPageState();
 }
 
-class _UserPageState extends State<UserPage> {
+class _UserPageState extends State<HomeUserPage> {
 
   @override
   Widget build(BuildContext context) {

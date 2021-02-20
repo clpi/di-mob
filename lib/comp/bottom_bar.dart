@@ -1,5 +1,11 @@
+import 'package:dimo/view/home/community.dart';
+import 'package:dimo/view/home/dash.dart';
+import 'package:dimo/view/home/records.dart';
+import 'package:dimo/view/home/user.dart';
+import 'package:dimo/view/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
+import 'package:path/path.dart';
 
 enum BottomBarKind {
   Labels,
@@ -9,31 +15,29 @@ enum BottomBarKind {
 class DlBottomBar extends StatefulWidget {
   const DlBottomBar ({
     Key key,
-    @required this.restorationId,
+    // @required this.restorationId,
     @required this.type,
+    this.currentIndex,
   }) : super(key: key);
 
-  final String restorationId;
+  // final String restorationId;
   final BottomBarKind type;
+  final int currentIndex;
 
   @override 
   _DlBottomBarState createState() => _DlBottomBarState();
 }
 
-class _DlBottomBarState extends State<DlBottomBar>
-  with RestorationMixin {
-  final RestorableInt _idx = RestorableInt(0);
+class _DlBottomBarState extends State<DlBottomBar> {
+  // with RestorationMixin {
+  // final RestorableInt _idx = RestorableInt(0);
+
+  int currentIndex = 0;
 
   @override
-  String get restorationId => widget.restorationId;
-
-  @override
-  void restoreState(RestorationBucket old, bool initRestore) {
-    registerForRestoration(_idx, 'bottom_navigation_tab_index');
-  }
-
-  void _navigate(BuildContext context) {
-
+  void initState() {
+    super.initState();
+    currentIndex = this.widget.currentIndex;
   }
 
   @override
@@ -53,60 +57,34 @@ class _DlBottomBarState extends State<DlBottomBar>
             activeIcon: Icon(Icons.book),
           ),
           BottomNavigationBarItem(
-            label: "Profile",
-            icon: Icon(Icons.person_rounded),
-            activeIcon: Icon(Icons.person_outline_rounded),
+            label: "Community",
+            icon: Icon(Icons.group_outlined),
+            activeIcon: Icon(Icons.group_rounded),
           ),
           BottomNavigationBarItem(
-            label: "Prefs",
-            icon: Icon(Icons.settings_rounded),
-            activeIcon: Icon(Icons.settings_outlined),
-          )
+            label: "You",
+            icon: Icon(Icons.person_outline_rounded),
+            activeIcon: Icon(Icons.person_rounded),
+          ),
     ];
 
-    // return BottomAppBar(
-    //     elevation: 2.0,
-    //     color: Colors.black12,
-    //     child: Row(
-    //       children: [
-    //         IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-    //         Spacer(),
-    //         IconButton(icon: Icon(Icons.search), onPressed: () {}),
-    //         IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
-    //       ],
-    //     ),
-    //   );
     return BottomNavigationBar(
       items: items,
       showSelectedLabels: true,
       showUnselectedLabels: false,
-      currentIndex: _idx.value,
+      currentIndex: currentIndex,
       selectedFontSize: textTheme.caption.fontSize,
       unselectedFontSize: textTheme.caption.fontSize,
-      iconSize: 23.0,
+      iconSize: 20.0,
       type: BottomNavigationBarType.fixed,
-      elevation: 2.0,
-      onTap: (index) {
-        setState(() { 
-          _idx.value = index; 
-        });
-        if (index == 0) {
-          Navigator.pushNamed(context, "Home");
-        } else if (index == 1) {
-          Navigator.pushNamed(context, "Records");
-        } else if (index == 2) {
-          Navigator.pushNamed(context, "User");
-        } else if (index == 3) {
-          Navigator.pushNamed(context, "Preferences");
-        } else {
-          Navigator.pushNamed(context, "Home");
-        }
-      },
+      elevation: 3.0,
+      onTap: (int idx) { setState(() { currentIndex = idx; }); }
       // selectedItemColor: colorScheme.onPrimary,
       // unselectedItemColor: colorScheme.onPrimary.withOpacity(0.38),
       // backgroundColor: Colors.black
     );
   }
+
 
   Widget alt() {
     return BottomAppBar(

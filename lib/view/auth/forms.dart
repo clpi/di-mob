@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:dimo/page/home/home.dart';
+import 'package:dimo/view/home/dash.dart';
+import 'package:dimo/view/home.dart';
 import 'package:dimo/util.dart';
 import 'package:dimo/comp/input.dart';
 import 'package:dimo/comp/button.dart';
@@ -26,13 +27,14 @@ class LoginForm extends StatelessWidget {
               prefixIcon: FlutterIcons.lock_ant,
             ),
             SizedBox(height: 25.0),
-            PrimaryButton(
-              text: "Login",
+            MaterialButton(
+              child: Text("Login"),
+              color: Color(0xffb0fe76),
               onPressed: () {
-                Helper.nextScreen(context, HomePage());
+                // Helper.nextScreen(context, HomeView());
+                Helper.nextScreen(context, HomeView());
               },
             ),
-            SizedBox(height: 10.0),
             Align(
               alignment: Alignment.centerRight,
               child: FlatButton(
@@ -142,7 +144,7 @@ class RegisterForm extends StatelessWidget {
             PrimaryButton(
               text: "Register",
               onPressed: () {
-                Helper.nextScreen(context, HomePage());
+                Helper.nextScreen(context, HomeDashPage());
               },
             ),
             SizedBox(height: 20.0),
