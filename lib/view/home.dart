@@ -31,10 +31,10 @@ class HomeView extends StatefulWidget {
 
   HomeView({Key key}) : super(key: key);
   final List<Widget> pages = <Widget>[
-      HomeDashPage(),
-      HomeRecordsPage(onTapped: (context) {}, records: [], key: Key("Records")),
-      HomeCommunityPage(),
-      HomeUserPage(),
+      HomeDashPage(key: Key("devisa")),
+      HomeRecordsPage(key: Key("records"), onTapped: (context) {}, records: []),
+      HomeCommunityPage(key: Key("community")),
+      HomeUserPage(key: Key("User")),
   ];
 
   @override
@@ -46,19 +46,28 @@ class _HomeViewState extends State<HomeView>
 
   TabController controller;
 
-  int _currentIndex = 0;
+  int _currentIndex;
   String _title = "devisa";
 
   @override
   void initState() {
     super.initState();
-    controller = TabController(length: 4, vsync: this);
+    _title = "devisa";
+    _currentIndex = 0;
+    controller = TabController(
+      length: 4, 
+      vsync: this,
+      initialIndex: 0,
+    );
   }
 
   @override
   void dispose() {
     controller.dispose();
     super.dispose();
+  }
+
+   void _toggleTab() {
   }
 
   @override
@@ -98,7 +107,10 @@ class _HomeViewState extends State<HomeView>
         floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
         drawer: dlDrawer,
         appBar: dlAppBar,
-        body: TabBarView(children: this.widget.pages, controller: controller, dragStartBehavior: DragStartBehavior.start,),
+        body: TabBarView(
+          children: this.widget.pages, 
+          controller: controller, 
+          dragStartBehavior: DragStartBehavior.down,),
         //   children: [
         //     for (final page in this.widget.pages) page
         //   ],
@@ -110,7 +122,7 @@ class _HomeViewState extends State<HomeView>
       //   onPopPage: (route, res) => route.didPop(res),
       // ),
         // bottomNavigationBar: dlBottom,
-        endDrawerEnableOpenDragGesture: true,
+        // endDrawerEnableOpenDragGesture: true,
         resizeToAvoidBottomInset: true,
         resizeToAvoidBottomPadding: true,
         floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
@@ -133,18 +145,27 @@ class _HomeViewState extends State<HomeView>
         //   // unselectedItemColor: colorScheme.onPrimary.withOpacity(0.38),
         //   // backgroundColor: Colors.black
         // )
-        bottomNavigationBar: BottomNavigationBar(
+        // bottomNavigationBar: new BottomAppBar(
+        //   child: TabBar(
+        //     controller: this.controller,
+        //     tabs: [for (final page in this.widget.pages) Tab(child: page)],
+        //   )
+        // ),
+        bottomNavigationBar: new BottomNavigationBar(
           items: items,
           showSelectedLabels: true,
           showUnselectedLabels: false,
-          currentIndex: _currentIndex,
+          currentIndex: controller.index,
           selectedFontSize: 12,
           iconSize: 20.0,
           type: BottomNavigationBarType.fixed,
           elevation: 3.0,
-          onTap: (int idx) { setState(() { 
-            _currentIndex = idx; }); 
-            controller.animateTo(idx);
+          onTap: (int idx) { 
+            setState(() { 
+              this._currentIndex = idx; 
+              this._title = this.widget.pages[idx].key.toString();
+              this.controller.animateTo(_currentIndex);
+            }); 
           }
           // selectedItemColor: colorScheme.onPrimary,
           // unselectedItemColor: colorScheme.onPrimary.withOpacity(0.38),
