@@ -49,7 +49,7 @@ class DlApp extends StatelessWidget {
           "Login": (BuildContext context) => LoginPage(),
           "Signup": (BuildContext context) => SignupPage(),
         },
-        theme: DlTheme.theme,
+        theme: DlTheme.dark,
         // theme: ThemeData.from(colorScheme: ColorScheme.dark(), textTheme: GoogleFonts.aBeeZeeTextTheme(),),
         // home: Scaffold(
         // ),

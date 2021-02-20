@@ -66,17 +66,12 @@ class LoginForm extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    height: ScreenUtil().setHeight(53.0),
                     width: 150.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          "assets/svg/google.svg",
-                          width: 30.0,
-                        ),
                         SizedBox(
                           width: 10.0,
                         ),
@@ -97,17 +92,12 @@ class LoginForm extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    height: ScreenUtil().setHeight(53.0),
                     width: 150.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          "assets/svg/facebook.svg",
-                          width: 30.0,
-                        ),
                         SizedBox(
                           width: 10.0,
                         ),
@@ -179,17 +169,12 @@ class RegisterForm extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    height: ScreenUtil().setHeight(53.0),
                     width: 150.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          "assets/svg/google.svg",
-                          width: 30.0,
-                        ),
                         SizedBox(
                           width: 10.0,
                         ),
@@ -210,17 +195,12 @@ class RegisterForm extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    height: ScreenUtil().setHeight(53.0),
                     width: 150.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                     child: Row(
                       children: [
-                        SvgPicture.asset(
-                          "assets/svg/facebook.svg",
-                          width: 30.0,
-                        ),
                         SizedBox(
                           width: 10.0,
                         ),

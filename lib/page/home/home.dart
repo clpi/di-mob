@@ -1,4 +1,5 @@
 import 'package:dimo/page/records/records.dart';
+import 'package:dimo/theme.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
@@ -78,20 +79,20 @@ class _HomePageState extends State<HomePage>
                 children: [
                   // sectionHeader("Dashboard", Icons.dashboard_rounded),
                   // section(),
-                  sectionHeader("Records", Icons.book_online_rounded),
+                  sectionHeader("Records", Icons.book_outlined, "Your records"),
                   RecordCard(name: "Record 1", desc: "A sample record", items: ["Item 1", "Item 2"]),
                   RecordCard(name: "Record 2", desc: "Another sample record", items: ["Item 1", "Item 2"]),
                   section(),
-                  sectionHeader("Items", Icons.book_online_rounded),
+                  sectionHeader("Items", Icons.emoji_objects_outlined, "Your items"),
                   RecordCard(name: "Item 1", desc: "A sample record", items: ["Item 1", "Item 2"]),
                   RecordCard(name: "Item 2", desc: "A sample record", items: ["Item 1", "Item 2"]),
                   section(),
-                  sectionHeader("Stats", Icons.book_online_rounded),
+                  sectionHeader("Stats", Icons.bar_chart_outlined, "Your stats"),
                   RecordCard(name: "Record 1", desc: "A sample record", items: ["Item 1", "Item 2"]),
                   section(),
-                  sectionHeader("Profile", Icons.book_online_rounded),
+                  sectionHeader("Profile", Icons.person_outline, "Your profile"),
                   section(),
-                  sectionHeader("Facts", Icons.book_online_rounded),
+                  sectionHeader("Facts", Icons.note, "Your facts"),
                   section(),
                 ],
               )
@@ -116,7 +117,7 @@ class _HomePageState extends State<HomePage>
     });
   }
 
-  Widget sectionHeader(String title, IconData icon) {
+  Widget sectionHeader(String title, IconData icon, String link) {
 
     return Container(
       // width: 100,
@@ -124,15 +125,14 @@ class _HomePageState extends State<HomePage>
         // color: Color(0xff3a383f),
         borderRadius: BorderRadius.circular(10),
       ),
-      margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Icon(icon, size: 32),
-          Divider(indent: 20),
-          Text(title, style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white)),
-        ]
+      padding: EdgeInsets.fromLTRB(10,0,10,0),
+      child: ListTile(
+        leading: Icon(icon),
+        trailing: FlatButton(child: Text(link, style: TextStyle(color: DlPalette.green)), onPressed: () {},),
+          // Icon(icon, size: 32),
+          // Divider(indent: 20),
+        title: Text(title, style: Theme.of(context).textTheme.headline5.copyWith(color: Colors.white, fontSize: 18.0)),
+        // subtitle: Text("Record feed", style: Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.white38)),
       )
     );
   }

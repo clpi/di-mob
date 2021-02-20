@@ -26,11 +26,29 @@ class _RecordCardState extends State<RecordCard> {
       // color: Theme.of(context).cardTheme.color,
       // clipBehavior: Clip.antiAlias,
       // margin: EdgeInsets.all(7.0),
+      child: InkWell(
+        canRequestFocus: true,
+        focusColor: Colors.black26,
+        enableFeedback: true,
+        highlightColor: Colors.black12,
+        onDoubleTap: () {},
+        onTap: () {},
+        splashColor: Colors.white12,
         child: Column(
           children: [
             ListTile(
               // trailing: Icon(Icons.more_vert_rounded, color: Color(0xffffffff).withOpacity(0.8),),
-              trailing: Text("4d 1h 38m ago", style: TextStyle(color: Colors.white24)),
+              trailing: FlatButton(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text("Seattle, WA", style: TextStyle(color: Color(0xffb0fe76).withOpacity(0.6))),
+                    Text("4d 1h 38m ago", style: TextStyle(color: Colors.white24)),
+                  ]
+                ),
+                onPressed: () {},
+              ),
               leading: CircleAvatar(
                 child: Icon(Icons.person_outline_rounded, size: 15, ),
                 backgroundColor: Color(0xffb0fe76),
@@ -50,44 +68,27 @@ class _RecordCardState extends State<RecordCard> {
                 style: TextStyle(color: Colors.white.withOpacity(0.5)),
               ),
             ),
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
-              buttonMinWidth: 10.0,
-              children: [
-                // FlatButton(
-                //   textColor: const Color(0xffb0fe76),
-                //   onPressed: () {
-                //     // Perform some action
-                //   },
-                //   child: const Text('Add'),
-                // ),
-                // FlatButton(
-                //   textColor: const Color(0xffb0fe76),
-                //   onPressed: () {
-                //     // Perform some action
-                //   },
-                //   child: const Text('Edit'),
-                // ),
-                // FlatButton(
-                //   textColor: const Color(0xffb0fe76),
-                //   onPressed: () {
-                //     // Perform some action
-                //   },
-                //   child: const Text('View'),
-                // ),
-                newBtn(context),
-                shareBtn(context),
-                usersBtn(context),
-                optionsBtn(context)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  newBtn(context),
+                  shareBtn(context),
+                  usersBtn(context),
+                  optionsBtn(context)
+                ],
+            ),
                 // IconButton(icon: Icon(Icons.add_circle_outline_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Add a new item or fact"),
                 // IconButton(icon: Icon(Icons.view_list_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Add a new item or fact"),
                 // IconButton(icon: Icon(Icons.share_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Share this record",),
                 // IconButton(icon: Icon(Icons.more_vert_outlined), onPressed: () {}, color: Colors.white, iconSize: 20, tooltip: "Share this record",),
-              ],
             ),
           ],
         ),
-
+      )
     );
   }
 
@@ -127,7 +128,8 @@ class _RecordCardState extends State<RecordCard> {
     return ButtonBar(
       alignment: MainAxisAlignment.start,
       layoutBehavior: ButtonBarLayoutBehavior.padded,
-      buttonPadding: EdgeInsets.only(left: 0.0),
+      mainAxisSize: MainAxisSize.max,
+      buttonPadding: EdgeInsets.zero,
       overflowButtonSpacing: 0.0,
       buttonMinWidth: 20,
 
@@ -145,7 +147,7 @@ class _RecordCardState extends State<RecordCard> {
         ),
         FlatButton(
           minWidth: 10,
-          child: Text("13", textAlign: TextAlign.start, style: TextStyle(color: Colors.white38, fontSize: 14),),
+          child: Text("13", textAlign: TextAlign.start, style: TextStyle(color: Colors.white54, fontSize: 14),),
           visualDensity: VisualDensity.compact,
           onPressed: () {},
           padding: EdgeInsets.all(0),

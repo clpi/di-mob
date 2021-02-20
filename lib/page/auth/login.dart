@@ -33,12 +33,6 @@ class _LoginPageState extends State<LoginPage> {
                       scale: 1.5,
                       child: Container(
                         height: MediaQuery.of(context).size.height * 0.25,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/pattern.png"),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
                       ),
                     ),
                   ),
