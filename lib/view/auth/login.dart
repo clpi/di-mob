@@ -25,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Container(
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Stack(
                 children: [
@@ -36,22 +37,27 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    bottom: 0.0,
-                    child: Container(
-                      constraints: BoxConstraints(minWidth: 200.0),
-                      alignment: Alignment.center,
-                      height: MediaQuery.of(context).size.height * 0.18,
-                      child: Text(
-                        "Welcome back",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w800,
+                  Container(
+                    constraints: BoxConstraints(minWidth: 200.0),
+                    alignment: Alignment.bottomCenter,
+                    height: MediaQuery.of(context).size.height * 0.18,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Welcome back",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: "Roboto",
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.w100,
+                          )
                         ),
-                      ),
-                      // color: Colors.deepPurpleAccent,
+                        Text("To Devisa"),
+                      ]
                     ),
+                    // color: Colors.deepPurpleAccent,
                   )
                 ],
               ),
@@ -60,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
               //   setActive: setActive,
               // ),
               SizedBox(
-                height: 40.0,
+                height: 20.0,
               ),
               AnimatedCrossFade(
                 firstChild: LoginForm(),
@@ -72,12 +78,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(
                 height: 20.0,
-              ),
-              FlatButton(
-                onPressed: () {},
-                child: Text(
-                  "Terms & Conditions",
-                ),
               ),
             ],
           ),

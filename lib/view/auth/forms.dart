@@ -28,7 +28,7 @@ class LoginForm extends StatelessWidget {
             ),
             SizedBox(height: 25.0),
             MaterialButton(
-              child: Text("Login"),
+              child: Text("Login", style: TextStyle(color: Color(0xff0a080f))),
               color: Color(0xffb0fe76),
               onPressed: () {
                 // Helper.nextScreen(context, HomeView());
@@ -40,7 +40,8 @@ class LoginForm extends StatelessWidget {
               child: FlatButton(
                 onPressed: () {},
                 child: Text(
-                  "Reset Password",
+                  "Forgot password?",
+                  style: TextStyle(color: Color(0xffb0fe76))
                 ),
               ),
             ),
@@ -51,8 +52,8 @@ class LoginForm extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Text(
-                    "OR",
-                    style: TextStyle(),
+                    "Or, sign in with",
+                    style: TextStyle(color: Colors.white54),
                   ),
                 ),
                 Expanded(child: Divider()),
@@ -61,60 +62,52 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               height: 15.0,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MaterialButton(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    width: 150.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                    ),
+                    color: Colors.white70,
+                    onPressed: () {},
                     child: Row(
                       children: [
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Text(
-                          "Google",
-                          style: TextStyle(
-                            color: Color.fromRGBO(105, 108, 121, 1),
-                          ),
-                        )
+                        Icon(FlutterIcons.google_circles_mco),
+                        SizedBox(width: 10.0),
+                        Text("Google",style: TextStyle(color: Colors.white,))
                       ],
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
+                  SizedBox(width: 10.0),
+                  MaterialButton(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    width: 150.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                    ),
+                    color: Colors.blue,
+                    onPressed: () {},
                     child: Row(
                       children: [
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Text(
-                          "Facebook",
-                          style: TextStyle(
-                            color: Color.fromRGBO(105, 108, 121, 1),
-                          ),
-                        )
+                        Icon(FlutterIcons.facebook_square_ant),
+                        SizedBox(width: 10.0),
+                        Text("Facebook",style: TextStyle(color: Colors.white,))
                       ],
                     ),
                   ),
-                )
-              ],
-            ),
+                  SizedBox(width: 10.0),
+                  MaterialButton(
+                    padding: EdgeInsets.symmetric(horizontal: 14.0),
+                    color: Colors.lightBlueAccent,
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(FlutterIcons.twitter_box_mco),
+                        SizedBox(width: 10.0),
+                        Text("Twitter",style: TextStyle(color: Colors.white,))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
@@ -195,12 +188,10 @@ class RegisterForm extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {},
-                  child: Container(
+                  child: MaterialButton(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
-                    width: 150.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                    ),
+                    color: Colors.blue,
+                    onPressed: () {},
                     child: Row(
                       children: [
                         SizedBox(
