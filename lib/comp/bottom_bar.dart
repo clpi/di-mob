@@ -12,6 +12,7 @@ enum BottomBarKind {
   NoLabels,
 }
 
+
 class DlBottomBar extends StatefulWidget {
   const DlBottomBar ({
     Key key,
@@ -46,27 +47,28 @@ class _DlBottomBarState extends State<DlBottomBar> {
     final textTheme = Theme.of(context).textTheme;
 
     var items = [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home_filled),
-          ),
-          BottomNavigationBarItem(
-            label: "Records",
-            icon: Icon(Icons.book_outlined),
-            activeIcon: Icon(Icons.book),
-          ),
-          BottomNavigationBarItem(
-            label: "Community",
-            icon: Icon(Icons.group_outlined),
-            activeIcon: Icon(Icons.group_rounded),
-          ),
-          BottomNavigationBarItem(
-            label: "You",
-            icon: Icon(Icons.person_outline_rounded),
-            activeIcon: Icon(Icons.person_rounded),
-          ),
+      BottomNavigationBarItem(
+        label: "Dash",
+        icon: Icon(Icons.home_outlined),
+        activeIcon: Icon(Icons.home_filled),
+      ),
+      BottomNavigationBarItem(
+        label: "Records",
+        icon: Icon(Icons.book_outlined),
+        activeIcon: Icon(Icons.book),
+      ),
+      BottomNavigationBarItem(
+        label: "Community",
+        icon: Icon(Icons.group_outlined),
+        activeIcon: Icon(Icons.group_rounded),
+      ),
+      BottomNavigationBarItem(
+        label: "You",
+        icon: Icon(Icons.person_outline_rounded),
+        activeIcon: Icon(Icons.person_rounded),
+      ),
     ];
+
 
     return BottomNavigationBar(
       items: items,

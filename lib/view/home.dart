@@ -110,10 +110,12 @@ class _HomeViewState extends State<HomeView>
         body: TabBarView(
           children: this.widget.pages, 
           controller: controller, 
-          dragStartBehavior: DragStartBehavior.down,),
-        //   children: [
-        //     for (final page in this.widget.pages) page
-        //   ],
+          physics: NeverScrollableScrollPhysics(),
+          // dragStartBehavior: DragStartBehavior.down,
+        ),
+          // children: [
+          //   for (final page in this.widget.pages) page
+          // ],
         // ),
       // body: Navigator(
       //   pages: [
@@ -163,8 +165,7 @@ class _HomeViewState extends State<HomeView>
           onTap: (int idx) { 
             setState(() { 
               this._currentIndex = idx; 
-              this._title = this.widget.pages[idx].key.toString();
-              this.controller.animateTo(_currentIndex);
+              this.controller.animateTo(idx);
             }); 
           }
           // selectedItemColor: colorScheme.onPrimary,
