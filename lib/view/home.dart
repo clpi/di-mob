@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView>
     _title = "devisa";
     _currentIndex = 0;
     controller = TabController(
-      length: 4, 
+      length: 4,
       vsync: this,
       initialIndex: 0,
     );
@@ -108,8 +108,8 @@ class _HomeViewState extends State<HomeView>
         drawer: dlDrawer,
         appBar: dlAppBar,
         body: TabBarView(
-          children: this.widget.pages, 
-          controller: controller, 
+          children: this.widget.pages,
+          controller: controller,
           physics: NeverScrollableScrollPhysics(),
           // dragStartBehavior: DragStartBehavior.down,
         ),
@@ -126,7 +126,6 @@ class _HomeViewState extends State<HomeView>
         // bottomNavigationBar: dlBottom,
         // endDrawerEnableOpenDragGesture: true,
         resizeToAvoidBottomInset: true,
-        resizeToAvoidBottomPadding: true,
         floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
         floatingActionButton: dlFab,
         drawerEnableOpenDragGesture: true,
@@ -162,11 +161,11 @@ class _HomeViewState extends State<HomeView>
           iconSize: 20.0,
           type: BottomNavigationBarType.fixed,
           elevation: 3.0,
-          onTap: (int idx) { 
-            setState(() { 
-              this._currentIndex = idx; 
+          onTap: (int idx) {
+            setState(() {
+              this._currentIndex = idx;
               this.controller.animateTo(idx);
-            }); 
+            });
           }
           // selectedItemColor: colorScheme.onPrimary,
           // unselectedItemColor: colorScheme.onPrimary.withOpacity(0.38),

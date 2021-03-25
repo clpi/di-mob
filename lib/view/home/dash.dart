@@ -163,7 +163,6 @@ Widget _layout(BuildContext context, Widget body) {
     bottomNavigationBar: dlBottom,
     endDrawerEnableOpenDragGesture: true,
     resizeToAvoidBottomInset: true,
-    resizeToAvoidBottomPadding: true,
     floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
     floatingActionButton: dlFab,
     drawerEnableOpenDragGesture: true,
