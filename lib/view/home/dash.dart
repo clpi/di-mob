@@ -1,5 +1,4 @@
 import 'package:dimo/view/home/records.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:dimo/theme.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animations/animations.dart';
@@ -18,7 +17,6 @@ import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
 import 'package:dimo/models/record/record.dart';
 import 'package:dimo/util.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 
 import '../records/record_router.dart';
 
@@ -41,25 +39,6 @@ class _HomeDashPageState extends State<HomeDashPage>
     with SingleTickerProviderStateMixin {
   RecordRouterDelegate _routerDelegate = RecordRouterDelegate();
   TabController controller;
-  RefreshController _refreshController =
-    RefreshController(initialRefresh: false);
-   void _onRefresh() async{
-    // monitor network fetch
-    await Future.delayed(Duration(milliseconds: 1000));
-    // if failed,use refreshFailed()
-    _refreshController.refreshCompleted();
-  }
-  void _onLoading() async{
-    // monitor network fetch
-    await Future.delayed(Duration(milliseconds: 1000));
-    // if failed,use loadFailed(),if no data return,use LoadNodata()
-    // items.add((items.length+1).toString());
-    if(mounted)
-    setState(() {
-
-    });
-    _refreshController.loadComplete();
-  }
 
 
   int _index = 0;
