@@ -126,7 +126,6 @@ class _PrefsPageState extends State<PrefsPage> {
       // bottomNavigationBar: DlBottomBar(restorationId: "", key: Key(""), type: BottomBarKind.Labels),
       endDrawerEnableOpenDragGesture: true,
       resizeToAvoidBottomInset: true,
-      resizeToAvoidBottomPadding: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: FloatingActionButton(
         mini: false,

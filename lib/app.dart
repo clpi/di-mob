@@ -168,8 +168,6 @@ Widget _appLayout(BuildContext context) {
     appBar: dlAppBar,
     bottomNavigationBar: dlBottom,
     endDrawerEnableOpenDragGesture: true,
-    resizeToAvoidBottomInset: true,
-    resizeToAvoidBottomPadding: true,
     floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
     floatingActionButton: dlFab,
     drawerEnableOpenDragGesture: true,
