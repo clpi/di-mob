@@ -1,4 +1,5 @@
 import 'package:dimo/view/home/records.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:dimo/theme.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:animations/animations.dart';
@@ -17,6 +18,8 @@ import 'package:dimo/comp/drawer.dart';
 import 'package:dimo/comp/app_bar.dart';
 import 'package:dimo/models/record/record.dart';
 import 'package:dimo/util.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+
 import '../records/record_router.dart';
 
 class HomeDashPage extends StatefulWidget {
@@ -38,6 +41,26 @@ class _HomeDashPageState extends State<HomeDashPage>
     with SingleTickerProviderStateMixin {
   RecordRouterDelegate _routerDelegate = RecordRouterDelegate();
   TabController controller;
+  RefreshController _refreshController =
+    RefreshController(initialRefresh: false);
+   void _onRefresh() async{
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    _refreshController.refreshCompleted();
+  }
+  void _onLoading() async{
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use loadFailed(),if no data return,use LoadNodata()
+    // items.add((items.length+1).toString());
+    if(mounted)
+    setState(() {
+
+    });
+    _refreshController.loadComplete();
+  }
+
 
   int _index = 0;
 
@@ -55,10 +78,13 @@ class _HomeDashPageState extends State<HomeDashPage>
   }
 
   @override
+  void testFunction() {
+
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    final bottomBar = DlBottomBar(key: Key("bottomBar"), currentIndex: 0, type: BottomBarKind.Labels);
-    final dlDrawer = DlDrawer(key: Key("drawer"));
-    final dlAppBar = DlAppBar(key: Key("appBar"), title: "div.is");
     final body = _body(context);
 
     return body;
@@ -83,7 +109,7 @@ class _HomeDashPageState extends State<HomeDashPage>
                   // sectionHeader("Dashboard", Icons.dashboard_rounded),
                   // section(),
                   sectionHeader("Records", Icons.book_outlined, "Your records"),
-                  RecordCard(name: "Record 1", desc: "A sample record", items: ["Item 1", "Item 2"]),
+                  RecordCard(name: "Sample Record", desc: "A sample record", items: ["Item 1", "Item 2"]),
                   RecordCard(name: "Record 2", desc: "Another sample record", items: ["Item 1", "Item 2"]),
                   section(),
                   sectionHeader("Items", Icons.emoji_objects_outlined, "Your items"),

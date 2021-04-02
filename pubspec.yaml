@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -38,8 +38,11 @@ dependencies:
 #  firebase_performance: ^0.4.3
 #  url_launcher: ^5.7.10
 #  share: ^0.6.5
-  get: ^3.24.0
   shared_preferences: ^0.5.12
+  image_picker: any
+  date_time_picker: any
+  supercharged: any
+  flutter_riverpod: any
   http: ^0.12.2
   animations: ^1.1.2
   flutter_bloc: ^6.1.1
@@ -65,8 +68,11 @@ dependencies:
   # flutter_local_notifications: ^3.0.2
   hive: ^1.4.4
   flutter_icons: any
-  flutter_screenutil: any
-  flutter_svg: any
+  fluttertoast: any
+  get: any
+  location: any
+  flutter_swiper: any
+  simple_animations: any
   # salomon_bottom_bar: any
 
 

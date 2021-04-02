@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dimo/router.dart';
 import 'package:dimo/comp/card.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
+
 
 class HomeCommunityPage extends StatefulWidget {
 
@@ -24,9 +27,23 @@ class _CommunityPageState extends State<HomeCommunityPage> {
         child: Center(
           child: Column(
             children: <Widget>[
-              Text("Community", style: TextStyle(fontSize: 30)),
+              Text("Tes paget", style: TextStyle(fontSize: 30)),
               MaterialButton(
-                onPressed: () { },
+                textColor: Colors.white,
+                child: Text("Hello there!", style: TextStyle(color: Colors.white),),
+
+                color: Color(0xffb0fe76),
+                onPressed: () {
+                    Fluttertoast.showToast(
+                    msg: "This is Center Short Toast",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.blue,
+          fontSize: 16.0
+      );
+                 },
               )
             ],
           ),

@@ -31,10 +31,10 @@ class HomeView extends StatefulWidget {
 
   HomeView({Key key}) : super(key: key);
   final List<Widget> pages = <Widget>[
-      HomeDashPage(key: Key("devisa")),
-      HomeRecordsPage(key: Key("records"), onTapped: (context) {}, records: []),
-      HomeCommunityPage(key: Key("community")),
-      HomeUserPage(key: Key("User")),
+      HomeDashPage(),
+      HomeRecordsPage(onTapped: (context) {}, records: []),
+      HomeCommunityPage(),
+      HomeUserPage(),
   ];
 
   @override

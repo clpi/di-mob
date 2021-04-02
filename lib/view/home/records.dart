@@ -15,7 +15,7 @@ class HomeRecordsPage extends StatefulWidget {
   );
 
   static String routeName = "Records";
-  List<Record> records;
+  final List<Record> records;
   final ValueChanged<Record> onTapped;
 
   HomeRecordsPage({Key key,
@@ -54,7 +54,7 @@ class _RecordsPageState extends State<HomeRecordsPage> {
                   for (var rec in widget.records)
                     ListTile(
                       title: Text(rec.name),
-                      subtitle: Text(rec.description),
+                      subtitle: Text(rec.descr),
                       onTap: () => widget.onTapped(rec),
                     )
                 ],

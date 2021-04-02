@@ -47,7 +47,7 @@ class RecordDetailsScreen extends StatelessWidget {
           children: [
             if (record != null) ...[
               Text(record.name, style: Theme.of(context).textTheme.headline1),
-              Text(record.description, style: Theme.of(context).textTheme.subtitle1),
+              Text(record.descr, style: Theme.of(context).textTheme.subtitle1),
             ],
           ],
         )

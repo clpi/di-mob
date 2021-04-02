@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:dimo/models/record/record.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 
 enum CardType {
@@ -63,7 +62,7 @@ class RecCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(250.0),
+      height: 250.0,
       child: Column(
         children: [
           Expanded(
@@ -104,13 +103,13 @@ class RecCard extends StatelessWidget {
                     height: 45.0,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: this.record.visibility == RecordVisibility.Private
+                      color: this.record.private == true
                           ? Colors.deepPurpleAccent
                           : Colors.deepPurple,
                     ),
                     child: Center(
                       child: Text(
-                        this.record.visibility == RecordVisibility.Public
+                        this.record.private == false
                             ? "Public"
                             : "Private",
                         style: TextStyle(
@@ -153,7 +152,7 @@ class RecCard extends StatelessWidget {
                   height: 5.0,
                 ),
                 Text(
-                  record.description,
+                  record.descr,
                   style: TextStyle(
                     fontSize: 13.0,
                     color: Color(0xFF343434),

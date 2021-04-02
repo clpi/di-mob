@@ -24,7 +24,6 @@ import 'package:dimo/models/record/record.dart';
 
 import 'theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path/path.dart';
 import 'package:google_fonts/google_fonts.dart';
 
